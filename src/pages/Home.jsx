@@ -78,37 +78,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our People Preview */}
-      <section className="section section-alt">
-        <div className="container" style={{ maxWidth: '1440px' }}>
-          <div className="grid-2" style={{ alignItems: 'center' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '0.75rem' }}>
-                Leadership
-              </p>
-              <h2 style={{ marginBottom: '1rem' }}>Our People</h2>
-              <h3 style={{ color: 'var(--text)', marginBottom: '0.25rem' }}>Mandar Gokhale</h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '1.5rem' }}>
-                Principal Chartered Accountant
-              </p>
-              <p style={{ lineHeight: 1.7, marginBottom: '2rem' }}>
-                M&S Business Solutions is headed by Mandar Gokhale, a seasoned Chartered Accountant from the Institute of Chartered Accountants in Australia with over a decade of specialized expertise in corporate and tax advisory.
-              </p>
-              <Link to="/about" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
-                Learn more about our practice &rarr;
-              </Link>
-            </div>
-            <div>
-              <img
-                src="/src/assets/mandar-cutout.webp"
-                alt="Mandar Gokhale"
-                style={{ width: '100%', height: '520px', objectFit: 'cover', borderRadius: '2px' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Consultation Call to Action */}
       <section className="section" style={{ textAlign: 'center', background: '#fff' }}>
         <div className="container" style={{ maxWidth: '800px' }}>
