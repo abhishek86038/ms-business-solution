@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import Team from '../components/Team';
 
 export default function Home() {
   return (
     <>
       <Hero />
 
-{/* Trust & Introduction Preview */}
+      {/* Trust & Introduction Preview */}
       <section className="section section-alt">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div style={{ maxWidth: '820px' }}>
@@ -51,8 +52,8 @@ export default function Home() {
                   Professional accounting will give you the resources to create sound plans to cut costs, increase profits and make your business grow.
                 </p>
               </div>
-              <Link 
-                to="/services/accounting" 
+              <Link
+                to="/services/accounting"
                 style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
                 Accounting services overview &rarr;
@@ -67,8 +68,8 @@ export default function Home() {
                   What is your tax strategy? Let our professionals guide you to ethically reduce your taxes while growing your business.
                 </p>
               </div>
-              <Link 
-                to="/services/taxation" 
+              <Link
+                to="/services/taxation"
                 style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
                 Taxation services overview &rarr;
@@ -99,10 +100,10 @@ export default function Home() {
               </Link>
             </div>
             <div>
-              <img 
-                src="/src/assets/mandar-cutout.webp" 
-                alt="Mandar Gokhale" 
-                style={{ width: '100%', height: '520px', objectFit: 'cover', borderRadius: '2px' }} 
+              <img
+                src="/src/assets/mandar-cutout.webp"
+                alt="Mandar Gokhale"
+                style={{ width: '100%', height: '520px', objectFit: 'cover', borderRadius: '2px' }}
               />
             </div>
           </div>

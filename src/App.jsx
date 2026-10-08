@@ -26,7 +26,7 @@ export default function App() {
             <Route path="/services/accounting" element={<Accounting />} />
             <Route path="/services/taxation" element={<Taxation />} />
             <Route path="/our-people" element={<OurPeople />} />
-            <Route path="/leadership" element={<OurPeople />} />
+            <Route path="/leadership" element={<Navigate to="/our-people" replace />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-consultation" element={<Navigate to="/contact" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
