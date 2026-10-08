@@ -137,7 +137,7 @@ export default function Team() {
             </p>
 
             <p className="msp-bio-p2">
-              His expertise includes annual financial statements, business and individual tax returns, statutory returns, and financial accounting for partnerships, companies, sole traders, SMSF and trusts.
+              Mandar specializes in preparation of Annual Financial Statements, Business & Individual Tax Returns and other statutory returns as well as complete Financial Accounting for Partnerships, Companies, Sole Traders, SMSF and Trusts.
             </p>
 
             {/* 4 Professional Credential Blocks */}
@@ -149,7 +149,7 @@ export default function Team() {
 
               <div className="msp-info-card">
                 <span className="msp-card-val">Chartered Accountant</span>
-                <span className="msp-card-lbl">Professional Qualification</span>
+                <span className="msp-card-lbl">Professional Expertise</span>
               </div>
 
               <div className="msp-info-card">
