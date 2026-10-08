@@ -115,7 +115,7 @@ export default function Accounting() {
                 <p style={{ fontSize: '1rem', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
                   All accounting engagements are directed by Mandar Gokhale, Chartered Accountant from the Institute of Chartered Accountants in Australia, guaranteeing complete professionalism and regulatory adherence.
                 </p>
-                <Link to="/our-people" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
+                <Link to="/about" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
                   Learn more about Mandar Gokhale &rarr;
                 </Link>
               </div>

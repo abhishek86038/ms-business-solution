@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
-import Team from '../components/Team';
 
 export default function Home() {
   return (
@@ -95,8 +94,8 @@ export default function Home() {
               <p style={{ lineHeight: 1.7, marginBottom: '2rem' }}>
                 M&S Business Solutions is headed by Mandar Gokhale, a seasoned Chartered Accountant from the Institute of Chartered Accountants in Australia with over a decade of specialized expertise in corporate and tax advisory.
               </p>
-              <Link to="/our-people" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
-                Read full profile &rarr;
+              <Link to="/about" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
+                Learn more about our practice &rarr;
               </Link>
             </div>
             <div>
