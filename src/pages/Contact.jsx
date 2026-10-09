@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
+import JellyButton from '../components/JellyButton';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,9 +12,32 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleSubmit = async (_e) => {
+    // Validate required fields
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+      const form = document.querySelector('form');
+      if (form && form.reportValidity) {
+        form.reportValidity();
+      }
+      throw new Error("Validation failed: Please fill out all required fields.");
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      const form = document.querySelector('form');
+      if (form && form.reportValidity) {
+        form.reportValidity();
+      }
+      throw new Error("Validation failed: Please enter a valid email address.");
+    }
+
+    // Real submission processing (simulate async network operation)
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    // Show Thank You message after the JellyButton returns to normal button
+    setTimeout(() => {
+      setSubmitted(true);
+    }, 2400);
   };
 
   return (
@@ -24,7 +48,7 @@ export default function Contact() {
         subtitle="Contact our office in Norwest Business Park to arrange a confidential consultation regarding your accounting or taxation needs."
       />
 
-      <section className="section">
+      <section className="section" data-theme="light">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div className="grid-2" style={{ alignItems: 'start', gap: '5rem' }}>
             
@@ -93,7 +117,7 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.5rem', color: 'var(--text)' }}>
                       Full Name *
@@ -197,13 +221,7 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button 
-                    type="submit" 
-                    className="btn btn-primary" 
-                    style={{ padding: '0.95rem 2rem', fontSize: '1rem', width: '100%' }}
-                  >
-                    Submit Consultation Request
-                  </button>
+                  <JellyButton onSubmit={handleSubmit} />
                 </form>
               )}
             </div>

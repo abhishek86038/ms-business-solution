@@ -4,7 +4,7 @@ import './Hero.css';
 
 export default function Hero() {
   return (
-    <section className="ms-hero" id="top">
+    <section className="ms-hero" id="top" data-theme="dark">
       {/* Background visual layers */}
       <div className="ms-grid" aria-hidden="true"></div>
       <div className="ms-glow" aria-hidden="true">

@@ -11,7 +11,7 @@ export default function Services() {
         subtitle="M&S Business Solutions focuses strictly on two specialized disciplines: Accounting and Taxation. Our focused model ensures deep expertise, meticulous compliance, and proactive financial guidance."
       />
 
-      <section className="section">
+      <section className="section" data-theme="light">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5rem' }}>
 

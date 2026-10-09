@@ -3,6 +3,7 @@ import React from 'react';
 export default function PageHeader({ title, subtitle, kicker }) {
   return (
     <section 
+      data-theme="light"
       style={{ 
         paddingTop: 'calc(var(--nav-height) + 3.5rem)', 
         paddingBottom: '3.5rem', 

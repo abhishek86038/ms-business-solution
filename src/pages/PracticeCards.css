@@ -1,0 +1,330 @@
+/* ==========================================================================
+   M&S BUSINESS SOLUTIONS - PRACTICE AREAS CARDS (BUSINESS CARD STYLE)
+   Inspired by corporate Australian business card design collateral.
+   ========================================================================== */
+
+.ms-practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.ms-practice-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(0, 48, 130, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease;
+  height: 100%;
+  text-decoration: none;
+}
+
+.ms-practice-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px -6px rgba(0, 48, 130, 0.12), 0 6px 14px -2px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e1;
+}
+
+/* ---------- LEFT BLUE VISUAL AREA ---------- */
+.ms-card-visual-wrap {
+  position: relative;
+  flex: 0 0 240px;
+  width: 240px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.25rem 1.25rem 2.25rem 2rem;
+  background: transparent;
+  isolation: isolate;
+}
+
+/* Background Curve SVGs */
+.ms-card-curve-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ms-card-curve-svg-mobile {
+  display: none;
+}
+
+/* Subtle highlight movement on hover */
+.ms-card-swoosh {
+  transition: opacity 0.35s ease;
+}
+
+.ms-practice-card:hover .ms-card-swoosh {
+  opacity: 0.85;
+}
+
+.ms-card-visual-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 165px;
+  color: #ffffff;
+}
+
+/* Emblem / Circle Icon Badge */
+.ms-visual-emblem {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 20, 60, 0.22);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-practice-card:hover .ms-visual-emblem {
+  transform: scale(1.06);
+}
+
+.ms-visual-icon {
+  width: 26px;
+  height: 26px;
+  color: #003082;
+}
+
+/* Branding & Sub-tag in Blue Area */
+.ms-visual-brand {
+  margin-bottom: auto;
+}
+
+.ms-visual-kicker {
+  display: block;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #93c5fd;
+  margin-bottom: 0.25rem;
+}
+
+.ms-visual-title {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.25;
+}
+
+.ms-visual-tagline {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Bottom pill in visual area */
+.ms-visual-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* ---------- RIGHT WHITE INFORMATION AREA ---------- */
+.ms-card-info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.75rem 2.25rem 2.25rem 1.75rem;
+  background: #ffffff;
+}
+
+.ms-card-content {
+  margin-bottom: 2rem;
+}
+
+.ms-card-title {
+  font-size: clamp(1.65rem, 1.8vw, 1.95rem);
+  font-weight: 700;
+  color: #003082;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* Horizontal Accent Divider (matching business card reference) */
+.ms-card-rule {
+  width: 68px;
+  height: 3px;
+  background: #003082;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+  transition: width 0.3s ease;
+}
+
+.ms-practice-card:hover .ms-card-rule {
+  width: 88px;
+}
+
+.ms-card-desc {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-muted, #4e5562);
+  margin: 0;
+}
+
+/* Service CTA Link */
+.ms-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #003082;
+  font-weight: 600;
+  font-size: 0.965rem;
+  text-decoration: none;
+  margin-top: auto;
+  transition: color 0.2s ease;
+}
+
+.ms-card-link:hover {
+  color: var(--blue-hover, #002266);
+  text-decoration: underline;
+}
+
+.ms-card-arrow {
+  display: inline-block;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ms-practice-card:hover .ms-card-arrow {
+  transform: translateX(5px);
+}
+
+/* ==========================================================================
+   RESPONSIVE BEHAVIOUR
+   ========================================================================== */
+
+/* Laptop / Medium Desktop adjustments */
+@media (max-width: 1200px) {
+  .ms-card-visual-wrap {
+    flex: 0 0 215px;
+    width: 215px;
+    padding: 2rem 1rem 2rem 1.5rem;
+  }
+  .ms-card-visual-inner {
+    width: 150px;
+  }
+  .ms-card-info {
+    padding: 2.25rem 1.75rem 2rem 1.25rem;
+  }
+}
+
+/* Tablet (1024px and down): Stack the 2 cards */
+@media (max-width: 1024px) {
+  .ms-practice-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .ms-card-visual-wrap {
+    flex: 0 0 240px;
+    width: 240px;
+  }
+  .ms-card-visual-inner {
+    width: 165px;
+  }
+}
+
+/* Mobile (640px and down): Stack visual panel on top, info below */
+@media (max-width: 640px) {
+  .ms-practice-card {
+    flex-direction: column;
+  }
+
+  .ms-card-visual-wrap {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: 155px;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+
+  /* Switch to horizontal-friendly curve on mobile */
+  .ms-card-curve-svg {
+    display: none;
+  }
+
+  .ms-card-curve-svg-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ms-card-visual-inner {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .ms-visual-emblem {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .ms-visual-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ms-visual-brand {
+    margin-bottom: 0;
+  }
+
+  .ms-visual-badge {
+    display: none;
+  }
+
+  .ms-card-info {
+    padding: 1.75rem 1.5rem 1.75rem 1.5rem;
+  }
+
+  .ms-card-content {
+    margin-bottom: 1.5rem;
+  }
+}

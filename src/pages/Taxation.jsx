@@ -11,7 +11,7 @@ export default function Taxation() {
         subtitle="What is your tax strategy? Let our professionals guide you to ethically reduce your taxes while growing your business."
       />
 
-      <section className="section">
+      <section className="section" data-theme="light">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div className="grid-sidebar" style={{ alignItems: 'start' }}>
             

@@ -5,6 +5,7 @@ import VectorWordmark from './VectorWordmark';
 export default function Footer() {
   return (
     <footer 
+      data-theme="dark"
       style={{ 
         position: 'relative', 
         background: '#05070B', 
@@ -88,6 +89,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <li><Link to="/" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Home</Link></li>
               <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>About Us</Link></li>
+              <li><Link to="/our-people" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Our People</Link></li>
               <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Our Services</Link></li>
               <li><Link to="/services/accounting" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', paddingLeft: '0.75rem' }}>↳ Accounting</Link></li>
               <li><Link to="/services/taxation" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', paddingLeft: '0.75rem' }}>↳ Taxation</Link></li>

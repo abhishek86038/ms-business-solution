@@ -11,7 +11,7 @@ export default function About() {
         subtitle="Complete taxation and accounting services for businesses and individuals across Sydney, built on integrity, technical rigor, and personal relationships."
       />
 
-      <section className="section">
+      <section className="section" data-theme="light">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div className="grid-2" style={{ alignItems: 'start', gap: '5rem' }}>
             <div>

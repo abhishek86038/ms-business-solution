@@ -11,7 +11,7 @@ export default function Accounting() {
         subtitle="Professional accounting will give you the resources to create sound plans to cut costs, increase profits and make your business grow."
       />
 
-      <section className="section">
+      <section className="section" data-theme="light">
         <div className="container" style={{ maxWidth: '1440px' }}>
           <div className="grid-sidebar" style={{ alignItems: 'start' }}>
             

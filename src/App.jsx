@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import Accounting from './pages/Accounting';
 import Taxation from './pages/Taxation';
 import Contact from './pages/Contact';
+import OurPeople from './pages/OurPeople';
 
 export default function App() {
   return (
@@ -24,8 +25,8 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/accounting" element={<Accounting />} />
             <Route path="/services/taxation" element={<Taxation />} />
-            <Route path="/our-people" element={<Navigate to="/about" replace />} />
-            <Route path="/leadership" element={<Navigate to="/about" replace />} />
+            <Route path="/our-people" element={<OurPeople />} />
+            <Route path="/leadership" element={<Navigate to="/our-people" replace />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-consultation" element={<Navigate to="/contact" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
