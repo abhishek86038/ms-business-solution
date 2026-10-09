@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import JellyButton from '../components/JellyButton';
+import AnimatedCard from '../components/AnimatedCard';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -59,58 +60,60 @@ export default function Contact() {
                 Our offices are conveniently located within Norwest Business Park in Bella Vista, with dedicated client parking and accessible public transport connections.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '3rem' }}>
-                <div>
-                  <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
-                    Physical Address
-                  </h4>
-                  <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
-                    Suite 306, Building A, 1 Burbank Place<br />
-                    Norwest Business Park, Bella Vista NSW 2153
-                  </p>
-                </div>
+              <AnimatedCard variant="alt" style={{ padding: '2.5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div>
+                    <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                      Physical Address
+                    </h4>
+                    <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
+                      Suite 306, Building A, 1 Burbank Place<br />
+                      Norwest Business Park, Bella Vista NSW 2153
+                    </p>
+                  </div>
 
-                <div>
-                  <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
-                    Postal Address
-                  </h4>
-                  <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
-                    P. O. Box 7344, Baulkham Hills NSW 2153
-                  </p>
-                </div>
+                  <div>
+                    <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                      Postal Address
+                    </h4>
+                    <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
+                      P. O. Box 7344, Baulkham Hills NSW 2153
+                    </p>
+                  </div>
 
-                <div>
-                  <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
-                    Telephone
-                  </h4>
-                  <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
-                    (02) 8814 7905<br />
-                    (02) 8824 3712
-                  </p>
-                </div>
+                  <div>
+                    <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                      Telephone
+                    </h4>
+                    <p style={{ fontSize: '1.0625rem', color: 'var(--text)', lineHeight: 1.6, margin: 0 }}>
+                      (02) 8814 7905<br />
+                      (02) 8824 3712
+                    </p>
+                  </div>
 
-                <div>
-                  <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
-                    Email
-                  </h4>
-                  <p style={{ fontSize: '1.0625rem', color: 'var(--text)', margin: 0 }}>
-                    <a href="mailto:info@msbusinesssolutions.com.au" style={{ color: 'var(--blue)', textDecoration: 'underline' }}>
-                      info@msbusinesssolutions.com.au
-                    </a>
-                  </p>
+                  <div>
+                    <h4 style={{ fontSize: '1rem', color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>
+                      Email
+                    </h4>
+                    <p style={{ fontSize: '1.0625rem', color: 'var(--text)', margin: 0 }}>
+                      <a href="mailto:info@msbusinesssolutions.com.au" style={{ color: 'var(--blue)', textDecoration: 'underline' }}>
+                        info@msbusinesssolutions.com.au
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </AnimatedCard>
             </div>
 
             {/* Consultation Request Form */}
-            <div style={{ background: '#fff', border: '1px solid var(--border)', padding: '3rem 2.5rem' }}>
+            <AnimatedCard isLarge style={{ padding: '3rem 2.5rem' }}>
               <h3 style={{ fontSize: '1.65rem', marginBottom: '0.5rem' }}>Request a Consultation</h3>
               <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
                 Please fill in the form below and one of our chartered accountants will contact you promptly.
               </p>
 
               {submitted ? (
-                <div style={{ padding: '2rem', background: 'var(--bg-alt)', border: '1px solid var(--blue)', textAlign: 'center' }}>
+                <div style={{ padding: '2rem', background: 'var(--bg-alt)', border: '1px solid var(--blue)', textAlign: 'center', borderRadius: '4px' }}>
                   <h4 style={{ color: 'var(--blue)', marginBottom: '0.5rem' }}>Thank You</h4>
                   <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', margin: 0 }}>
                     Your consultation request has been received. Our team in Norwest will contact you shortly.
@@ -193,7 +196,7 @@ export default function Contact() {
                         fontSize: '0.9375rem',
                         background: '#fff',
                         boxSizing: 'border-box'
-                      }}
+                      }} 
                     >
                       <option value="Accounting">Accounting Services</option>
                       <option value="Taxation">Taxation Services</option>
@@ -224,7 +227,7 @@ export default function Contact() {
                   <JellyButton onSubmit={handleSubmit} />
                 </form>
               )}
-            </div>
+            </AnimatedCard>
 
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 // Mandar's background-removed PNG must be saved as: src/assets/mandar-gokhale.png
 import mandarPhoto from '../assets/mandar-cutout.png';
+import './AnimatedCard.css';
 /* All styles for this section live here, so this one file is enough. Classes are prefixed ms-people- / ms-jelly. */
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap');
@@ -307,15 +308,19 @@ function Team() {
                             height="648"
                         />
 
-                        <div className="ms-people-card">
-                            <span className="ms-people-ic">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                    <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" />
-                                    <circle cx="12" cy="9.5" r="2.5" />
-                                </svg>
-                            </span>
-                            <small>Based in</small>
-                            <b>Norwest</b>
+                        <div className="ms-people-card ms-animated-card">
+                            <div className="ms-animated-card-blob" style={{ width: '110px', height: '110px' }} aria-hidden="true" />
+                            <div className="ms-animated-card-bg" aria-hidden="true" />
+                            <div className="ms-animated-card-content">
+                                <span className="ms-people-ic">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                        <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" />
+                                        <circle cx="12" cy="9.5" r="2.5" />
+                                    </svg>
+                                </span>
+                                <small>Based in</small>
+                                <b>Norwest</b>
+                            </div>
                         </div>
 
                         <div className="ms-people-badge">

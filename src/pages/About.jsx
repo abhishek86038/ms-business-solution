@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
+import AnimatedCard from '../components/AnimatedCard';
 
 export default function About() {
   return (
@@ -29,18 +30,18 @@ export default function About() {
               <div style={{ borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Our Core Principles</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                  <div>
+                  <AnimatedCard style={{ padding: '1.75rem' }}>
                     <h4 style={{ fontSize: '1.05rem', color: 'var(--blue)', marginBottom: '0.5rem' }}>Absolute Transparency</h4>
-                    <p style={{ fontSize: '0.9375rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
+                    <p style={{ fontSize: '0.9375rem', lineHeight: 1.6, color: 'var(--text-muted)', margin: 0 }}>
                       No jargon, hidden fees, or ambiguous advice. We communicate with clear facts and actionable insights.
                     </p>
-                  </div>
-                  <div>
+                  </AnimatedCard>
+                  <AnimatedCard style={{ padding: '1.75rem' }}>
                     <h4 style={{ fontSize: '1.05rem', color: 'var(--blue)', marginBottom: '0.5rem' }}>Direct Partner Access</h4>
-                    <p style={{ fontSize: '0.9375rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
+                    <p style={{ fontSize: '0.9375rem', lineHeight: 1.6, color: 'var(--text-muted)', margin: 0 }}>
                       You work directly with qualified chartered accountants who understand your history and objectives.
                     </p>
-                  </div>
+                  </AnimatedCard>
                 </div>
               </div>
             </div>
@@ -51,12 +52,12 @@ export default function About() {
                 alt="M&S Business Solutions Norwest Office" 
                 style={{ width: '100%', height: '560px', objectFit: 'cover', borderRadius: '2px', marginBottom: '2rem' }} 
               />
-              <div style={{ background: 'var(--bg-alt)', padding: '2rem', border: '1px solid var(--border)' }}>
+              <AnimatedCard variant="alt" isLarge style={{ padding: '2rem' }}>
                 <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--text)' }}>Location & Regional Focus</h4>
                 <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: 1.6 }}>
                   Based in Suite 306, Building A, 1 Burbank Place, Norwest Business Park, Baulkham Hills, serving Bella Vista, Castle Hill, the Hills Shire, and clients across Greater Sydney.
                 </p>
-              </div>
+              </AnimatedCard>
             </div>
           </div>
         </div>

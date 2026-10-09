@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Uiverse Animated Blob Card Effect
+   Adapted with scoped classes, Australian corporate palette & accessibility.
+   ========================================================================== */
+
+.ms-animated-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ms-animated-card:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+}
+
+/* Semi-translucent frosted glass background layer */
+.ms-animated-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Alternative subtle tint for alt-background cards */
+.ms-animated-card-bg.is-alt {
+  background: rgba(248, 250, 252, 0.88);
+}
+
+/* Moving animated blob */
+.ms-animated-card-blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2563eb 0%, #3b82f6 45%, #60a5fa 75%, transparent 100%);
+  opacity: 0.65;
+  filter: blur(20px);
+  animation: ms-blob-bounce 6s infinite ease;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Secondary companion blob for larger cards for enhanced organic movement */
+.ms-animated-card-blob.is-large {
+  width: 240px;
+  height: 240px;
+  filter: blur(28px);
+}
+
+/* Content layer keeping all text, links, and buttons sharp and interactive */
+.ms-animated-card-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+}
+
+/* Movement through the card's corners */
+@keyframes ms-blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .ms-animated-card-blob {
+    animation: none !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 0.25 !important;
+  }
+}

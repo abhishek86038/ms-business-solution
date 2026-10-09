@@ -1,0 +1,810 @@
+/* ==========================================================================
+   M&S Business Solutions AI Chatbot
+   Faithfully matching the attached visual reference:
+   - Floating dark glassmorphic container with warm ambient radial illumination
+   - Centered 3D glowing organic sphere / orb with realistic lighting
+   - Translucent "Close chat" pill button at the top
+   - Glowing microphone button with surround halo
+   - Verified M&S Australian accounting & taxation knowledge
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Floating Chat Launcher (Bottom Right)
+   -------------------------------------------------------------------------- */
+.ms-chat-launcher {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99990;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ms-chat-launcher:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.ms-chat-launcher:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.ms-chat-launcher-badge {
+  background: rgba(18, 12, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 120, 40, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 105, 30, 0.15);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.ms-chat-launcher-badge .ms-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff7a29;
+  box-shadow: 0 0 8px #ff7a29;
+  animation: ms-live-pulse 2s infinite ease-in-out;
+}
+
+.ms-chat-launcher-orb {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 35% 35%, 
+    #fff7e6 0%, 
+    #ffb44d 18%, 
+    #ff7a29 38%, 
+    #cf4906 60%, 
+    #5e1702 85%, 
+    #1f0600 100%);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.5),
+    0 0 30px 6px rgba(255, 115, 30, 0.45),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.9),
+    inset 4px 4px 10px rgba(255, 230, 180, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.ms-chat-launcher:hover .ms-chat-launcher-orb {
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.6),
+    0 0 42px 10px rgba(255, 125, 35, 0.65),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.9),
+    inset 4px 4px 10px rgba(255, 230, 180, 0.8);
+}
+
+.ms-chat-launcher-orb svg {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Chatbot Modal / Window Container
+   -------------------------------------------------------------------------- */
+.ms-chat-window-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99995;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 24px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.ms-chat-window-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ms-chat-card {
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  height: 720px;
+  max-height: calc(100vh - 36px);
+  background: 
+    radial-gradient(circle at 50% 28%, rgba(246, 114, 30, 0.38) 0%, rgba(180, 50, 8, 0.16) 35%, rgba(12, 7, 5, 0.95) 75%),
+    #090504;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 130, 45, 0.22);
+  box-shadow: 
+    0 25px 70px -10px rgba(0, 0, 0, 0.85),
+    0 0 60px 10px rgba(245, 100, 20, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: "Outfit", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+}
+
+.ms-chat-window-backdrop.is-open .ms-chat-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Subtle background aura & noise effect */
+.ms-chat-bg-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(255, 120, 30, 0.28) 0%, rgba(220, 60, 10, 0.08) 50%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header Section (Matching "✕ Close chat" pill)
+   -------------------------------------------------------------------------- */
+.ms-chat-header {
+  position: relative;
+  z-index: 10;
+  padding: 18px 24px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ms-chat-close-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 8px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.ms-chat-close-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.02);
+}
+
+.ms-chat-close-pill:active {
+  transform: scale(0.97);
+}
+
+.ms-chat-firm-subtitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. Hero Glowing 3D Orb Section
+   -------------------------------------------------------------------------- */
+.ms-chat-orb-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 20px 4px;
+  flex-shrink: 0;
+}
+
+.ms-chat-orb-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer ambient aura */
+.ms-chat-orb-aura {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 125, 35, 0.35) 0%, rgba(220, 60, 10, 0.15) 50%, transparent 70%);
+  filter: blur(18px);
+  animation: ms-aura-pulse 4s infinite ease-in-out;
+}
+
+/* The Realistic 3D Sphere */
+.ms-chat-orb {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  /* Multi-stop spherical light model matching reference */
+  background: radial-gradient(circle at 33% 33%, 
+    #fff7e6 0%, 
+    #ffb44d 15%, 
+    #ff7926 32%, 
+    #d44705 52%, 
+    #7a1a02 78%, 
+    #240600 96%);
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.65),
+    0 0 50px 14px rgba(255, 115, 30, 0.42),
+    0 0 95px 25px rgba(225, 70, 10, 0.22),
+    inset -14px -14px 28px rgba(0, 0, 0, 0.9),
+    inset 8px 8px 18px rgba(255, 235, 185, 0.65);
+  animation: ms-orb-breathe 4s infinite ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* State: Listening (Reacts with pulsation) */
+.ms-chat-orb.is-listening {
+  animation: ms-orb-listen 1.8s infinite ease-in-out;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.65),
+    0 0 65px 20px rgba(255, 130, 40, 0.65),
+    0 0 120px 40px rgba(240, 80, 15, 0.35),
+    inset -14px -14px 28px rgba(0, 0, 0, 0.85),
+    inset 8px 8px 22px rgba(255, 245, 205, 0.8);
+}
+
+/* State: Thinking / Loading */
+.ms-chat-orb.is-thinking {
+  animation: ms-orb-think 2.5s infinite linear;
+}
+
+/* Status text directly under the sphere (e.g. "Aira is listening...." -> "M&S Advisor is listening....") */
+.ms-chat-status {
+  margin-top: 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 20px;
+}
+
+.ms-chat-status-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff7a29;
+  box-shadow: 0 0 6px #ff7a29;
+  animation: ms-live-pulse 1.5s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   5. Dynamic Message & Conversation Area
+   -------------------------------------------------------------------------- */
+.ms-chat-body {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.ms-chat-body::-webkit-scrollbar {
+  width: 5px;
+}
+.ms-chat-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* Feature Hero Welcome / Speech Headline Typography */
+.ms-chat-hero-text {
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  margin: 2px 0 8px;
+  padding: 0 4px;
+}
+
+.ms-chat-hero-text em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+/* Quick Action Chips */
+.ms-chat-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 2px 0 6px;
+}
+
+.ms-chat-quick-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9.5px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.22s ease;
+  outline: none;
+}
+
+.ms-chat-quick-action-btn:hover {
+  background: rgba(255, 120, 35, 0.14);
+  border-color: rgba(255, 130, 45, 0.35);
+  transform: translateX(3px);
+  color: #ffffff;
+}
+
+.ms-chat-quick-action-btn:active {
+  transform: translateX(0);
+}
+
+.ms-chat-quick-action-btn svg {
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.ms-chat-quick-action-btn:hover svg {
+  transform: translateX(2px);
+  color: #ff8533;
+}
+
+/* Message Bubbles */
+.ms-chat-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 90%;
+  animation: ms-msg-in 0.28s ease-out;
+}
+
+.ms-chat-msg.is-user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.ms-chat-msg.is-bot {
+  align-self: flex-start;
+  align-items: flex-start;
+  max-width: 95%;
+}
+
+.ms-chat-bubble {
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.ms-chat-msg.is-user .ms-chat-bubble {
+  background: linear-gradient(135deg, rgba(255, 120, 35, 0.35) 0%, rgba(200, 60, 10, 0.25) 100%);
+  border: 1px solid rgba(255, 130, 40, 0.35);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.ms-chat-msg.is-bot .ms-chat-bubble {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f2f5;
+  border-bottom-left-radius: 4px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ms-chat-msg-time {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 0 4px;
+}
+
+/* Links inside bot message */
+.ms-chat-action-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ms-chat-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 120, 35, 0.18);
+  border: 1px solid rgba(255, 130, 45, 0.35);
+  color: #ffbe8a;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ms-chat-link-btn:hover {
+  background: #ff7a29;
+  color: #ffffff;
+  border-color: #ff7a29;
+}
+
+/* Typing Indicator */
+.ms-chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  width: fit-content;
+}
+
+.ms-chat-typing span {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: ms-typing-bounce 1.4s infinite ease-in-out both;
+}
+
+.ms-chat-typing span:nth-child(1) { animation-delay: -0.32s; }
+.ms-chat-typing span:nth-child(2) { animation-delay: -0.16s; }
+.ms-chat-typing span:nth-child(3) { animation-delay: 0s; }
+
+/* --------------------------------------------------------------------------
+   6. Bottom Controls Bar (Microphone, Pause, Send, Text Toggle)
+   -------------------------------------------------------------------------- */
+.ms-chat-footer {
+  position: relative;
+  z-index: 10;
+  padding: 14px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(9, 5, 4, 0.8) 40%, #090504 100%);
+}
+
+/* Optional text input box */
+.ms-chat-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 6px 8px 6px 14px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ms-chat-input-bar:focus-within {
+  border-color: rgba(255, 130, 45, 0.5);
+  box-shadow: 0 0 16px rgba(245, 100, 20, 0.2);
+}
+
+.ms-chat-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ms-chat-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+/* Bottom 3-Button Control Bar directly matching Reference */
+.ms-chat-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+/* Left: Sound / Audio Mute or Reset Button */
+.ms-chat-ctrl-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.ms-chat-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.ms-chat-ctrl-btn:active {
+  transform: scale(0.95);
+}
+
+/* Center: Glowing Microphone Button with Halo Ring */
+.ms-chat-mic-halo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.ms-chat-mic-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: radial-gradient(circle at 35% 35%, 
+    #ff9838 0%, 
+    #e65405 50%, 
+    #b03500 100%);
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.4),
+    0 0 28px rgba(255, 115, 30, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.ms-chat-mic-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 
+    0 6px 22px rgba(0, 0, 0, 0.5),
+    0 0 36px rgba(255, 125, 35, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.ms-chat-mic-btn:active {
+  transform: scale(0.96);
+}
+
+.ms-chat-mic-btn.is-active {
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ff5500 60%, #a02000 100%);
+  animation: ms-mic-recording 1.2s infinite ease-in-out;
+}
+
+/* Right: Send Button */
+.ms-chat-send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.ms-chat-send-btn:hover:not(:disabled) {
+  background: rgba(255, 120, 35, 0.25);
+  border-color: rgba(255, 130, 45, 0.45);
+  color: #ff8533;
+  transform: scale(1.05);
+}
+
+.ms-chat-send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.ms-chat-send-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   7. Keyframe Animations
+   -------------------------------------------------------------------------- */
+@keyframes ms-orb-breathe {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.035) translateY(-3px);
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes ms-orb-listen {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  25% {
+    transform: scale(1.06) translateY(-4px);
+  }
+  50% {
+    transform: scale(0.98) translateY(2px);
+  }
+  75% {
+    transform: scale(1.04) translateY(-2px);
+  }
+}
+
+@keyframes ms-orb-think {
+  0% {
+    transform: scale(1.02) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    transform: scale(1.02) rotate(360deg);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes ms-aura-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@keyframes ms-mic-recording {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 60, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px 10px rgba(255, 60, 0, 0.9);
+  }
+}
+
+@keyframes ms-live-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes ms-msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ms-typing-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1.1); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive Adjustments for Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .ms-chat-window-backdrop {
+    padding: 0;
+  }
+
+  .ms-chat-card {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .ms-chat-launcher {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .ms-chat-orb-wrapper {
+    width: 145px;
+    height: 145px;
+  }
+
+  .ms-chat-orb {
+    width: 130px;
+    height: 130px;
+  }
+
+  .ms-chat-hero-text {
+    font-size: 18px;
+  }
+}

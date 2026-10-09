@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
+import AnimatedCard from '../components/AnimatedCard';
 
 export default function Accounting() {
   return (
@@ -17,7 +18,7 @@ export default function Accounting() {
             
             {/* Sidebar Navigation & Quick Contact */}
             <div style={{ position: 'sticky', top: 'calc(var(--nav-height) + 2rem)' }}>
-              <div style={{ background: 'var(--bg-alt)', padding: '2rem', border: '1px solid var(--border)', marginBottom: '2rem' }}>
+              <AnimatedCard variant="alt" style={{ padding: '2rem', marginBottom: '2rem' }}>
                 <h4 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--blue)', marginBottom: '1rem' }}>
                   Our Services
                 </h4>
@@ -33,9 +34,9 @@ export default function Accounting() {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </AnimatedCard>
 
-              <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+              <AnimatedCard style={{ padding: '2rem' }}>
                 <h4 style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Need Accounting Advice?</h4>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
                   Talk directly with our Chartered Accountants in Norwest Business Park.
@@ -43,7 +44,7 @@ export default function Accounting() {
                 <Link to="/contact" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', boxSizing: 'border-box' }}>
                   Book Consultation
                 </Link>
-              </div>
+              </AnimatedCard>
             </div>
 
             {/* Main Content Area */}
@@ -66,51 +67,51 @@ export default function Accounting() {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginBottom: '4rem' }}>
                 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>Company Structure & Setup</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Assistance with new company set up and selecting the right commercial entity (Sole Trader, Partnership, Company, or Trust) to optimize asset protection and commercial flexibility.
                   </p>
-                </div>
+                </AnimatedCard>
 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>Accounting Systems Implementation</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Establishing robust accounting infrastructure and financial controls so you have transparent visibility over sales, expenses, and operational margins.
                   </p>
-                </div>
+                </AnimatedCard>
 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>Cash Flow & Profit Optimisation</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Expert guidance in optimizing cash flow from day-to-day business activities, managing working capital, and identifying cost-reduction opportunities.
                   </p>
-                </div>
+                </AnimatedCard>
 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>Asset Acquisition Advisory</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Professional guidance in buying plant, equipment, and commercial assets with optimal depreciation, structuring, and financing methods.
                   </p>
-                </div>
+                </AnimatedCard>
 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>General Ledger & Cash Book Review</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Ongoing reconciliation, ledger hygiene, and financial reviews to prevent discrepancies and ensure error-free statutory reporting.
                   </p>
-                </div>
+                </AnimatedCard>
 
-                <div style={{ border: '1px solid var(--border)', padding: '2rem', background: '#fff' }}>
+                <AnimatedCard style={{ padding: '2rem' }}>
                   <h4 style={{ fontSize: '1.2rem', color: 'var(--blue)', marginBottom: '0.75rem' }}>Annual Financial Reporting & ASIC</h4>
                   <p style={{ fontSize: '0.9375rem', lineHeight: 1.65, color: 'var(--text-muted)', margin: 0 }}>
                     Complete preparation of Annual Financial Statements, balance sheets, and statutory documentation, supported by ASIC corporate secretarial support.
                   </p>
-                </div>
+                </AnimatedCard>
 
               </div>
 
-              <div style={{ background: 'var(--bg-alt)', padding: '2.5rem', border: '1px solid var(--border)' }}>
+              <AnimatedCard variant="alt" isLarge style={{ padding: '2.5rem' }}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Headed by Chartered Accountant Mandar Gokhale</h3>
                 <p style={{ fontSize: '1rem', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
                   All accounting engagements are directed by Mandar Gokhale, Chartered Accountant from the Institute of Chartered Accountants in Australia, guaranteeing complete professionalism and regulatory adherence.
@@ -118,7 +119,7 @@ export default function Accounting() {
                 <Link to="/about" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
                   Learn more about Mandar Gokhale &rarr;
                 </Link>
-              </div>
+              </AnimatedCard>
 
             </div>
 
