@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PageHeader from '../components/PageHeader';
 import Reveal from '../components/Reveal';
 import ContactBand from '../components/ContactBand';
+import FlipCard from '../components/FlipCard';
 import taxUpdates from '../data/taxUpdates';
 import './TaxUpdate.css';
 
 export default function TaxUpdate() {
-  const [expandedIds, setExpandedIds] = useState(new Set());
-
   useEffect(() => {
     document.title = 'Tax Update | M&S Business Solutions';
   }, []);
-
-  const toggleExpand = (id) => {
-    setExpandedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
 
   return (
     <div className="ms-tax-scope">
@@ -38,48 +25,44 @@ export default function TaxUpdate() {
       <section className="ms-tax-section" data-theme="light">
         <div className="ms-tax-container">
           <div className="ms-tax-grid">
-            {taxUpdates.map((item, idx) => {
-              const isExpanded = expandedIds.has(item.id);
-              return (
-                <Reveal key={item.id} delay={(idx % 2) * 120} style={{ height: '100%' }}>
-                  <article className="ms-tax-card">
-                    <div className="ms-tax-card-header">
-                      <span className="ms-tax-card-date">{item.date}</span>
-                    </div>
-
-                    <h2 className="ms-tax-card-title">{item.title}</h2>
-                    <p className="ms-tax-card-summary">{item.summary}</p>
-
-                    {/* Inline Expandable Body */}
-                    <div className={`ms-tax-expand-wrapper ${isExpanded ? 'is-open' : ''}`}>
-                      <div className="ms-tax-expand-inner">
-                        <div className="ms-tax-card-body">
-                          {item.body.map((para, pIdx) => (
-                            <p key={pIdx} className="ms-tax-paragraph">
-                              {para}
-                            </p>
-                          ))}
-                        </div>
+            {taxUpdates.map((item, idx) => (
+              <Reveal key={item.id} delay={(idx % 2) * 120} style={{ height: '100%' }}>
+                <FlipCard
+                  minHeight={420}
+                  borderRadius={22}
+                  frontLabel="Read more"
+                  backLabel="Back to summary"
+                  frontBackground="#ffffff"
+                  backBackground="linear-gradient(155deg, #0e173b 0%, #060b1e 100%)"
+                  frontColor="#2f3fff"
+                  backColor="#8ba1ff"
+                  front={
+                    <>
+                      <div className="ms-tax-card-header">
+                        <span className="ms-tax-card-date">{item.date}</span>
                       </div>
-                    </div>
-
-                    {/* Expand / Collapse Button */}
-                    <button
-                      type="button"
-                      className="ms-tax-toggle-btn"
-                      onClick={() => toggleExpand(item.id)}
-                      aria-expanded={isExpanded}
-                      aria-label={`${isExpanded ? 'Collapse' : 'Read more about'} ${item.title}`}
-                    >
-                      <span>{isExpanded ? 'Show less' : 'Read more'}</span>
-                      <span className="ms-tax-toggle-arrow" aria-hidden="true">
-                        &rarr;
-                      </span>
-                    </button>
-                  </article>
-                </Reveal>
-              );
-            })}
+                      <h2 className="ms-tax-card-title">{item.title}</h2>
+                      <p className="ms-tax-card-summary">{item.summary}</p>
+                    </>
+                  }
+                  back={
+                    <>
+                      <div className="ms-tax-card-header">
+                        <span className="ms-tax-card-date ms-tax-card-date--back">{item.date}</span>
+                      </div>
+                      <h2 className="ms-tax-card-title ms-tax-card-title--back">{item.title}</h2>
+                      <div className="ms-tax-card-body-text">
+                        {item.body.map((para, pIdx) => (
+                          <p key={pIdx} className="ms-tax-paragraph ms-tax-paragraph--back">
+                            {para}
+                          </p>
+                        ))}
+                      </div>
+                    </>
+                  }
+                />
+              </Reveal>
+            ))}
           </div>
 
           {/* General Advice Disclaimer */}
