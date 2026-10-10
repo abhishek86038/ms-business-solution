@@ -7,6 +7,7 @@ import CountUp from '../components/CountUp';
 import ContactBand from '../components/ContactBand';
 import ChladniBackground from '../components/chladni/ChladniBackground';
 import ExpandingPanels from '../components/ExpandingPanels';
+import FlipCard from '../components/FlipCard';
 import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
@@ -423,11 +424,44 @@ export default function Home() {
           <div className="ms-home-teaser-grid">
             {latestTaxUpdates.map((item, idx) => (
               <Reveal key={item.id} delay={idx * 100} style={{ height: '100%' }}>
-                <article className="ms-home-teaser-card">
-                  <span className="ms-home-teaser-date">{item.date}</span>
-                  <h3 className="ms-home-teaser-title">{item.title}</h3>
-                  <p className="ms-home-teaser-summary">{item.summary}</p>
-                </article>
+                <FlipCard
+                  minHeight={440}
+                  borderRadius={22}
+                  frontLabel="Read more"
+                  backLabel="Back to summary"
+                  frontBackground="#ffffff"
+                  backBackground="linear-gradient(155deg, #0e173b 0%, #060b1e 100%)"
+                  frontColor="#2f3fff"
+                  backColor="#8ba1ff"
+                  front={
+                    <>
+                      <span className="ms-home-teaser-date">{item.date}</span>
+                      <h3 className="ms-home-teaser-title">{item.title}</h3>
+                      <p className="ms-home-teaser-summary">{item.summary}</p>
+                    </>
+                  }
+                  back={
+                    <>
+                      <span className="ms-home-teaser-date ms-home-teaser-date--back">
+                        {item.date}
+                      </span>
+                      <h3 className="ms-home-teaser-title ms-home-teaser-title--back">
+                        {item.title}
+                      </h3>
+                      <div className="ms-home-teaser-body-text">
+                        {item.body && item.body.length > 0 ? (
+                          item.body.map((para, pIdx) => (
+                            <p key={pIdx} className="ms-home-teaser-para">
+                              {para}
+                            </p>
+                          ))
+                        ) : (
+                          <p className="ms-home-teaser-para">{item.summary}</p>
+                        )}
+                      </div>
+                    </>
+                  }
+                />
               </Reveal>
             ))}
           </div>

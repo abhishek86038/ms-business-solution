@@ -735,6 +735,34 @@
   margin: 0;
 }
 
+.ms-home-teaser-date--back {
+  background-color: rgba(47, 63, 255, 0.22);
+  color: #8ba1ff;
+  border: 1px solid rgba(47, 63, 255, 0.38);
+  margin-bottom: 12px;
+}
+
+.ms-home-teaser-title--back {
+  color: #ffffff;
+  font-size: 1.08rem;
+  line-height: 1.32;
+  margin-bottom: 10px;
+}
+
+.ms-home-teaser-body-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 28px;
+}
+
+.ms-home-teaser-para {
+  font-size: 0.835rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
 .ms-home-teaser-cta {
   display: flex;
   justify-content: center;
@@ -873,7 +901,14 @@
 }
 
 /* Responsive updates for sections 5, 8, 9 */
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
+  .ms-home-teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 680px) {
   .ms-home-teaser-grid {
     grid-template-columns: 1fr;
     gap: 20px;
