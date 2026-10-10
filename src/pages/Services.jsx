@@ -67,11 +67,12 @@ export default function Services() {
 
   return (
     <div className="ms-services-scope">
-      {/* 1. Page Header (Kept intact) */}
+      {/* 1. Page Header with professional commercial advisory background */}
       <PageHeader 
-        kicker="Practice Areas"
+        kicker="Advisory & Compliance"
         title="Our Services"
         subtitle="Specialized accounting, taxation, and business advisory services designed to give your business clarity, total compliance, and sustainable growth."
+        bgImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       />
 
       {/* Tax Update Navigation Pill */}

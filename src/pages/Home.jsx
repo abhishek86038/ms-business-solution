@@ -6,7 +6,6 @@ import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import ContactBand from '../components/ContactBand';
 import ChladniBackground from '../components/chladni/ChladniBackground';
-import RoundCarousel from '../components/RoundCarousel';
 import { office1, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
@@ -23,7 +22,7 @@ export default function Home() {
       num: '01',
       title: 'Accounting',
       image: accounting,
-      alt: 'Financial spreadsheets, accounting calculator and ledger records',
+      alt: 'Professional accountant reviewing financial reports and ledger documents at a desk',
       bullets: [
         'Company structure',
         'Setting up accounting systems',
@@ -37,7 +36,7 @@ export default function Home() {
       num: '02',
       title: 'Taxation',
       image: taxation,
-      alt: 'Tax compliance documents, statutory returns and review documents',
+      alt: 'Tax professional reviewing Australian tax compliance and statutory documentation',
       bullets: [
         'Tax planning',
         'GST',
@@ -51,7 +50,7 @@ export default function Home() {
       num: '03',
       title: 'Business Services',
       image: business,
-      alt: 'Small business owner review, corporate analytics and structuring desk',
+      alt: 'Professional business advisor consulting with a business owner on commercial strategy',
       bullets: [
         'ASIC support',
         'Business structuring',
@@ -275,27 +274,16 @@ export default function Home() {
         <div className="ms-home-container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <div className="ms-home-practice-header">
-              <p className="ms-home-eyebrow">Core capabilities</p>
               <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
                 Our Three Practice Areas
               </h2>
             </div>
           </Reveal>
 
-          <Reveal delay={110}>
-            <RoundCarousel
-              spacing={2.8}
-              speed={4.5}
-              direction="right"
-              drag={true}
-              sensitivity={4.5}
-              tilt={-6}
-              perspective={2400}
-              cornerRadius={22}
-              background="transparent"
-            >
-              {practiceAreas.map((area) => (
-                <article key={area.num} className="ms-home-practice-card">
+          <div className="ms-home-practice-grid">
+            {practiceAreas.map((area, idx) => (
+              <Reveal key={area.num} delay={idx * 110} style={{ height: '100%' }}>
+                <article className="ms-home-practice-card">
                   <div className="ms-home-practice-media">
                     <img
                       src={area.image}
@@ -304,7 +292,6 @@ export default function Home() {
                       width={1400}
                       height={933}
                       loading="lazy"
-                      draggable={false}
                     />
                   </div>
                   <div className="ms-home-practice-body">
@@ -326,9 +313,9 @@ export default function Home() {
                     </Link>
                   </div>
                 </article>
-              ))}
-            </RoundCarousel>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -339,7 +326,6 @@ export default function Home() {
         <div className="ms-home-container">
           <Reveal>
             <div className="ms-home-who-header">
-              <p className="ms-home-eyebrow">Who We Work With</p>
               <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
                 Accounting and tax for every kind of client
               </h2>
@@ -365,8 +351,7 @@ export default function Home() {
       <section className="ms-home-section ms-home-section--white" data-theme="light">
         <div className="ms-home-container">
           <Reveal>
-            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 52px' }}>
-              <p className="ms-home-eyebrow">Why M&amp;S Business Solutions</p>
+            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
               <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
                 A personal approach backed by technical expertise
               </h2>
@@ -394,7 +379,6 @@ export default function Home() {
         <div className="ms-home-container">
           <Reveal>
             <div className="ms-home-process-header">
-              <p className="ms-home-eyebrow">Our Process</p>
               <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
                 Simple from the first call
               </h2>
@@ -426,7 +410,6 @@ export default function Home() {
         <div className="ms-home-container">
           <Reveal>
             <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
-              <p className="ms-home-eyebrow">Stay informed</p>
               <h2 className="ms-home-heading" style={{ marginBottom: '12px' }}>
                 Tax Update
               </h2>
@@ -466,7 +449,6 @@ export default function Home() {
         <div className="ms-home-container">
           <Reveal>
             <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
-              <p className="ms-home-eyebrow">Common Questions</p>
               <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
                 Frequently Asked Questions
               </h2>

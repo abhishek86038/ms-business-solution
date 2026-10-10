@@ -18,7 +18,7 @@
   z-index: 99990;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   cursor: pointer;
   background: none;
   border: none;
@@ -36,14 +36,20 @@
   transform: translateY(0) scale(0.98);
 }
 
+/* Collapsed by default: only circular orb visible */
 .ms-chat-launcher-badge {
-  background: rgba(18, 12, 10, 0.85);
+  background: rgba(18, 12, 10, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 120, 40, 0.3);
+  border: 1px solid transparent;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 105, 30, 0.15);
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 0;
+  margin-right: 0;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   color: #ffffff;
   font-size: 13.5px;
   font-weight: 600;
@@ -52,6 +58,35 @@
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  transform: translateX(12px);
+  transition: 
+    max-width 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.26s ease,
+    padding 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.26s ease,
+    transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* On desktop hover / focus: smoothly expand launcher badge */
+@media (hover: hover) and (pointer: fine) {
+  .ms-chat-launcher:hover .ms-chat-launcher-badge,
+  .ms-chat-launcher:focus-visible .ms-chat-launcher-badge {
+    max-width: 200px;
+    opacity: 1;
+    padding: 8px 16px;
+    margin-right: 12px;
+    border-color: rgba(255, 120, 40, 0.3);
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}
+
+/* On touch devices: remain circular icon by default */
+@media (hover: none) {
+  .ms-chat-launcher-badge {
+    display: none;
+  }
 }
 
 .ms-chat-launcher-badge .ms-live-dot {
@@ -61,6 +96,7 @@
   background: #ff7a29;
   box-shadow: 0 0 8px #ff7a29;
   animation: ms-live-pulse 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 .ms-chat-launcher-orb {
@@ -772,6 +808,16 @@
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
   40% { transform: scale(1.1); opacity: 1; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-chat-launcher,
+  .ms-chat-launcher-badge,
+  .ms-chat-launcher-orb {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 
 /* --------------------------------------------------------------------------
    8. Responsive Adjustments for Mobile

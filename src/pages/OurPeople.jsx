@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PageHeader from '../components/PageHeader';
 import Team from '../components/Team'; // the arch-design hero (Mandar's photo, stats, LinkedIn button)
 
 /* Styles for the new sections below the hero. All classes are prefixed ms-pf- */
@@ -100,14 +101,21 @@ export default function OurPeople() {
     <div className="ms-pf">
       <style>{css}</style>
 
-      {/* 1. Hero: Who is Mandar Gokhale (arch design) */}
+      {/* Hero Header with authentic business/team environment background */}
+      <PageHeader 
+        kicker="Leadership & Practice"
+        title="Our People"
+        subtitle="Chartered accountants and registered tax agents dedicated to building lasting commercial partnerships with Sydney businesses."
+        bgImage="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1600&q=85"
+      />
+
+      {/* 1. Mandar Gokhale Profile (arch design) */}
       <Team />
 
       {/* 2. What the firm does for clients */}
       <section ref={helpRef} data-theme="light" className={`ms-pf-sec ms-pf-help${helpSeen ? ' is-in' : ''}`} aria-labelledby="ms-pf-help-title">
         <div className="ms-pf-wrap">
           <div>
-            <p className="ms-pf-eyebrow" data-r style={{ '--i': '0' }}>How we help</p>
             <h2 id="ms-pf-help-title" data-r style={{ '--i': '1' }}>
               Numbers you can <em>rely on.</em>
             </h2>
@@ -140,10 +148,9 @@ export default function OurPeople() {
         </div>
       </section>
 
-      {/* 3. Who the firm works with */}
+      {/* 3. Client types */}
       <section ref={whoRef} data-theme="light" className={`ms-pf-sec ms-pf-who${whoSeen ? ' is-in' : ''}`} aria-labelledby="ms-pf-who-title">
         <div className="ms-pf-wrap">
-          <p className="ms-pf-eyebrow" data-r style={{ '--i': '0' }}>Who we work with</p>
           <h2 id="ms-pf-who-title" data-r style={{ '--i': '1' }}>
             Accounting and tax for <em>every kind of client.</em>
           </h2>

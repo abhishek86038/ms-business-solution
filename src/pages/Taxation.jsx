@@ -7,9 +7,10 @@ export default function Taxation() {
   return (
     <>
       <PageHeader 
-        kicker="Services / Taxation"
+        kicker="Practice Areas / Taxation"
         title="Taxation Services"
         subtitle="What is your tax strategy? Let our professionals guide you to ethically reduce your taxes while growing your business."
+        bgImage="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1600&q=85"
       />
 
       <section className="section" data-theme="light">

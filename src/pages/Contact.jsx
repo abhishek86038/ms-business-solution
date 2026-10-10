@@ -44,9 +44,10 @@ export default function Contact() {
   return (
     <>
       <PageHeader 
-        kicker="Get in Touch"
+        kicker="Norwest Business Park"
         title="Book a Consultation"
         subtitle="Contact our office in Norwest Business Park to arrange a confidential consultation regarding your accounting or taxation needs."
+        bgImage="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=85"
       />
 
       <section className="section" data-theme="light">

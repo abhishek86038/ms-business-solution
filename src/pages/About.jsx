@@ -8,9 +8,10 @@ export default function About() {
   return (
     <>
       <PageHeader 
-        kicker="About M&S Business Solutions"
+        kicker="Norwest Practice"
         title="Trusted Chartered Accounting in Norwest Business Park"
         subtitle="Complete taxation and accounting services for businesses and individuals across Sydney, built on integrity, technical rigor, and personal relationships."
+        bgImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85"
       />
 
       <section className="section" data-theme="light">
@@ -53,16 +54,27 @@ export default function About() {
               </div>
             </div>
 
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" 
-                alt="M&S Business Solutions Norwest Office" 
-                style={{ width: '100%', height: '560px', objectFit: 'cover', borderRadius: '2px', marginBottom: '2rem' }} 
-              />
-              <AnimatedCard variant="alt" isLarge style={{ padding: '2rem' }}>
-                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--text)' }}>Location & Regional Focus</h4>
-                <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: 1.6 }}>
-                  Based in Suite 306, Building A, 1 Burbank Place, Norwest Business Park, Baulkham Hills, serving Bella Vista, Castle Hill, the Hills Shire, and clients across Greater Sydney.
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <AnimatedCard variant="alt" isLarge style={{ padding: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--text)', fontWeight: 700 }}>
+                  Norwest Business Park Practice
+                </h4>
+                <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                  Based in Suite 306, Building A, 1 Burbank Place, Baulkham Hills, M&amp;S Business Solutions serves businesses and individuals across Bella Vista, Castle Hill, the Hills Shire, and Greater Sydney.
+                </p>
+                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.25rem' }}>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>
+                    Conveniently situated with dedicated client visitor parking and easy access to the Sydney Metro Northwest.
+                  </p>
+                </div>
+              </AnimatedCard>
+
+              <AnimatedCard isLarge style={{ padding: '2.5rem' }}>
+                <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--blue)', fontWeight: 700 }}>
+                  Chartered Professional Standards
+                </h4>
+                <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
+                  Our practice operates under the rigorous ethical and technical frameworks of the Chartered Accountants Australia and New Zealand (CA ANZ) and the Tax Practitioners Board (TPB), ensuring peace of mind across all compliance and statutory lodgements.
                 </p>
               </AnimatedCard>
             </div>

@@ -83,18 +83,24 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links (Two-column layout) */}
           <div>
             <h3 style={{ fontSize: '1rem', color: '#fff', marginBottom: '1.25rem', fontWeight: 600, letterSpacing: '0.04em' }}>Pages</h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><Link to="/" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Home</Link></li>
-              <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>About Us</Link></li>
-              <li><Link to="/our-people" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Our People</Link></li>
-              <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Our Services</Link></li>
-              <li><Link to="/services/accounting" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', paddingLeft: '0.75rem' }}>↳ Accounting</Link></li>
-              <li><Link to="/services/taxation" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', paddingLeft: '0.75rem' }}>↳ Taxation</Link></li>
-              <li><Link to="/contact" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem' }}>Contact</Link></li>
-            </ul>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(115px, 1fr))', gap: '1rem 1.75rem' }}>
+              {/* Column 1: Main Pages */}
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <li><Link to="/" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', textDecoration: 'none' }}>Home</Link></li>
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', textDecoration: 'none' }}>About Us</Link></li>
+                <li><Link to="/our-people" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', textDecoration: 'none' }}>Our People</Link></li>
+                <li><Link to="/contact" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', textDecoration: 'none' }}>Contact</Link></li>
+              </ul>
+              {/* Column 2: Services & Sub-services */}
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9375rem', fontWeight: 600, textDecoration: 'none' }}>Our Services</Link></li>
+                <li><Link to="/services/accounting" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.875rem', paddingLeft: '0.5rem', textDecoration: 'none' }}>↳ Accounting</Link></li>
+                <li><Link to="/services/taxation" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.875rem', paddingLeft: '0.5rem', textDecoration: 'none' }}>↳ Taxation</Link></li>
+              </ul>
+            </div>
           </div>
 
           {/* Office & Contact */}
@@ -118,6 +124,7 @@ export default function Footer() {
           style={{ 
             borderTop: '1px solid rgba(255,255,255,0.14)', 
             paddingTop: '2rem', 
+            paddingRight: 'clamp(96px, 12vw, 140px)', 
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center', 
@@ -130,10 +137,7 @@ export default function Footer() {
           <div>
             &copy; {new Date().getFullYear()} M&S Business Solutions. All rights reserved.
           </div>
-          <div>
-            Chartered Accountants &bull; Registered Tax Agents &bull; Sydney, NSW
-          </div>
-          <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.8125rem', letterSpacing: '0.02em' }}>
+          <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.8125rem', letterSpacing: '0.02em' }}>
             Powered by{' '}
             <a 
               href="https://jobgen.ai/" 

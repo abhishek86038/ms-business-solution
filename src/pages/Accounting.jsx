@@ -7,9 +7,10 @@ export default function Accounting() {
   return (
     <>
       <PageHeader 
-        kicker="Services / Accounting"
+        kicker="Practice Areas / Accounting"
         title="Accounting Services"
         subtitle="Professional accounting will give you the resources to create sound plans to cut costs, increase profits and make your business grow."
+        bgImage="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
       />
 
       <section className="section" data-theme="light">
