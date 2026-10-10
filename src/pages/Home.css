@@ -458,6 +458,34 @@
 }
 
 /* ==========================================================================
+   E) WHY M&S SECTION (LightBeams animated background)
+   ========================================================================== */
+.ms-home-why-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #060b18;
+}
+
+.ms-home-why-section .ms-home-heading {
+  color: #ffffff;
+}
+
+.ms-home-why-inner {
+  padding: 100px 24px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .ms-home-why-inner {
+    padding: 72px 20px;
+  }
+}
+
+/* ==========================================================================
    F) HOW WE WORK
    ========================================================================== */
 .ms-home-process-header {

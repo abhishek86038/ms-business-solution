@@ -8,6 +8,7 @@ import ContactBand from '../components/ContactBand';
 import ChladniBackground from '../components/chladni/ChladniBackground';
 import ExpandingPanels from '../components/ExpandingPanels';
 import FlipCard from '../components/FlipCard';
+import LightBeams from '../components/LightBeams';
 import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
@@ -356,22 +357,32 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          5. WHY M&S (Horizontal Expanding Panels matching card.mp4)
+          5. WHY M&S (Horizontal Expanding Panels with LightBeams background)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--white" data-theme="light">
-        <div className="ms-home-container">
-          <Reveal>
-            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
-              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
-                A personal approach backed by technical expertise
-              </h2>
-            </div>
-          </Reveal>
+      <section className="ms-home-why-section" data-theme="dark">
+        <LightBeams
+          color="#bdd3e8"
+          background="radial-gradient(1100px 650px at 50% 15%, #0e1e47 0%, #060b18 70%)"
+          speed={14}
+          intensity={0.55}
+          angle={-20}
+        >
+          <div className="ms-home-why-inner">
+            <div className="ms-home-container">
+              <Reveal>
+                <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
+                  <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
+                    A personal approach backed by technical expertise
+                  </h2>
+                </div>
+              </Reveal>
 
-          <Reveal delay={120}>
-            <ExpandingPanels items={whyPoints} height={420} borderRadius={22} expandRatio={4.8} />
-          </Reveal>
-        </div>
+              <Reveal delay={120}>
+                <ExpandingPanels items={whyPoints} height={420} borderRadius={22} expandRatio={4.8} />
+              </Reveal>
+            </div>
+          </div>
+        </LightBeams>
       </section>
 
       {/* ====================================================================
