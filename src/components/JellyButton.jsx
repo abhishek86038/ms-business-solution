@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const jellyStyles = `
 .ms-jelly-btn {
@@ -289,11 +290,13 @@ const jellyStyles = `
 
 
 export default function JellyButton({
+  to,
   onSubmit,
   children = "Submit Consultation Request"
 }) {
 
   const [state, setState] = useState("idle");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
 
@@ -303,7 +306,12 @@ export default function JellyButton({
 
     setState("wobble");
 
-    await new Promise(resolve => setTimeout(resolve, 550));
+    await new Promise(resolve => setTimeout(resolve, 350));
+
+    if (to) {
+      navigate(to);
+      return;
+    }
 
     setState("loading");
 

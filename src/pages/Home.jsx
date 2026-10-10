@@ -1,233 +1,336 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
-import './PracticeCards.css';
+import Team from '../components/Team';
+import Reveal from '../components/Reveal';
+import CountUp from '../components/CountUp';
+import ContactBand from '../components/ContactBand';
+import { office1, accounting, taxation, business } from '../data/images';
+import './Home.css';
 
 export default function Home() {
+  const practiceAreas = [
+    {
+      num: '01',
+      title: 'Accounting',
+      image: accounting,
+      alt: 'Financial spreadsheets, accounting calculator and ledger records',
+      bullets: [
+        'Company structure',
+        'Setting up accounting systems',
+        'Choosing the right entity',
+        'Optimising cash flow'
+      ],
+      linkText: 'Accounting services',
+      linkUrl: '/services/accounting'
+    },
+    {
+      num: '02',
+      title: 'Taxation',
+      image: taxation,
+      alt: 'Tax compliance documents, statutory returns and review documents',
+      bullets: [
+        'Tax planning',
+        'GST',
+        'Capital gains tax',
+        'ATO matters and audit defence'
+      ],
+      linkText: 'Taxation services',
+      linkUrl: '/services/taxation'
+    },
+    {
+      num: '03',
+      title: 'Business Services',
+      image: business,
+      alt: 'Small business owner review, corporate analytics and structuring desk',
+      bullets: [
+        'ASIC support',
+        'Business structuring',
+        'BAS preparation and lodgement',
+        'Annual returns and financial reports'
+      ],
+      linkText: 'Business services',
+      linkUrl: '/services#business-services'
+    }
+  ];
+
+  const clientTypes = [
+    {
+      title: 'Small Business',
+      desc: 'Accounts, BAS and tax kept up to date.',
+      rowClass: 'ms-home-who-card--r1'
+    },
+    {
+      title: 'Companies',
+      desc: 'Company structure, financial statements and returns.',
+      rowClass: 'ms-home-who-card--r1'
+    },
+    {
+      title: 'Self Employed',
+      desc: 'Clear records and tax returns for sole traders.',
+      rowClass: 'ms-home-who-card--r1'
+    },
+    {
+      title: 'SMSF',
+      desc: 'Accounting and tax compliance for your fund.',
+      rowClass: 'ms-home-who-card--r1'
+    },
+    {
+      title: 'Partnerships',
+      desc: 'Accurate accounts for every partner.',
+      rowClass: 'ms-home-who-card--r2'
+    },
+    {
+      title: 'Trusts',
+      desc: 'Trust accounts and tax returns done properly.',
+      rowClass: 'ms-home-who-card--r2'
+    },
+    {
+      title: 'Individuals',
+      desc: 'Tax returns and advice for your personal situation.',
+      rowClass: 'ms-home-who-card--r2'
+    }
+  ];
+
+  const workSteps = [
+    {
+      num: '01',
+      title: 'Introductory consultation',
+      desc: 'We learn about your business and goals.'
+    },
+    {
+      num: '02',
+      title: 'Review of your position',
+      desc: 'We look at your accounts, structure and tax.'
+    },
+    {
+      num: '03',
+      title: 'Clear next steps',
+      desc: 'You get a plan and we get to work.'
+    }
+  ];
+
   return (
-    <>
+    <div className="ms-home-scope">
+      {/* 1. Hero Section (Untouched) */}
       <Hero />
 
-      {/* Trust & Introduction Preview */}
-      <section className="section section-alt" data-theme="light">
-        <div className="container" style={{ maxWidth: '1440px' }}>
-          <div style={{ maxWidth: '820px' }}>
-            <p style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '1rem' }}>
-              Chartered Accounting Practice
-            </p>
-            <h2 style={{ fontSize: 'clamp(2rem, 2.75vw, 2.85rem)', lineHeight: 1.25, marginBottom: '1.5rem' }}>
-              Clear financial direction for Sydney businesses and individuals.
-            </h2>
-            <p style={{ fontSize: '1.1875rem', lineHeight: 1.7, color: 'var(--text-muted)', marginBottom: '2rem' }}>
-              Situated in Norwest Business Park, Bella Vista, M&S Business Solutions offers tailored taxation and accounting services designed to eliminate compliance uncertainty, optimize tax outcomes, and build sustainable commercial growth.
-            </p>
-            <Link to="/about" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              Learn more about our practice &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Preview Section (Only Accounting & Taxation) */}
-      <section className="section" data-theme="light">
-        <div className="container" style={{ maxWidth: '1440px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem', flexWrap: 'wrap', gap: '1.5rem' }}>
-            <div>
-              <p style={{ fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '0.75rem' }}>
-                Core Capabilities
-              </p>
-              <h2 style={{ marginBottom: 0 }}>Our Two Practice Areas</h2>
+      {/* ====================================================================
+          A) INTRO WITH PHOTO
+          ==================================================================== */}
+      <section className="ms-home-section ms-home-section--light" data-theme="light">
+        <div className="ms-home-container">
+          <div className="ms-home-intro-grid">
+            
+            {/* Left: Introduction Text */}
+            <div className="ms-home-intro-text">
+              <Reveal>
+                <p className="ms-home-eyebrow">
+                  Chartered Accounting Practice
+                </p>
+                <h2 className="ms-home-heading">
+                  Clear financial direction for Sydney businesses and individuals.
+                </h2>
+              </Reveal>
+              <Reveal delay={100}>
+                <p className="ms-home-subheading">
+                  Situated in Norwest Business Park, Bella Vista, M&amp;S Business Solutions offers tailored taxation and accounting services designed to eliminate compliance uncertainty, optimize tax outcomes, and build sustainable commercial growth.
+                </p>
+              </Reveal>
+              <Reveal delay={180}>
+                <Link to="/about" className="ms-home-intro-link">
+                  Learn more about our practice &rarr;
+                </Link>
+              </Reveal>
             </div>
-            <Link to="/services" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.9375rem' }}>
-              View all services &rarr;
-            </Link>
-          </div>
 
-          <div className="ms-practice-grid">
-            {/* Accounting Card */}
-            <div className="ms-practice-card">
-              <div className="ms-card-visual-wrap">
-                {/* Desktop vertical curve SVG */}
-                <svg className="ms-card-curve-svg" viewBox="0 0 240 320" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="msBlueGradAcc" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#002366" />
-                      <stop offset="55%" stopColor="#003082" />
-                      <stop offset="100%" stopColor="#0040a8" />
-                    </linearGradient>
-                    <linearGradient id="msSwooshGradAcc" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#2563eb" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.15" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M 0,0 L 205,0 C 248,80 242,220 185,320 L 0,320 Z"
-                    fill="url(#msSwooshGradAcc)"
-                    className="ms-card-swoosh"
+            {/* Right: Office Photo with Offset Blue Backdrop & Floating Card */}
+            <Reveal delay={150}>
+              <div className="ms-home-intro-media">
+                <div className="ms-home-intro-offset-bg" aria-hidden="true" />
+                <div className="ms-home-intro-photo-card">
+                  <img
+                    src={office1}
+                    alt="M&S Business Solutions modern office in Norwest Business Park"
+                    className="ms-home-intro-img"
+                    width={1400}
+                    height={1050}
+                    loading="lazy"
                   />
-                  <path
-                    d="M 0,0 L 175,0 C 220,85 212,225 155,320 L 0,320 Z"
-                    fill="url(#msBlueGradAcc)"
-                  />
-                </svg>
+                </div>
 
-                {/* Mobile horizontal curve SVG */}
-                <svg className="ms-card-curve-svg-mobile" viewBox="0 0 400 155" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="msBlueGradAccMob" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#002366" />
-                      <stop offset="60%" stopColor="#003082" />
-                      <stop offset="100%" stopColor="#0040a8" />
-                    </linearGradient>
-                    <linearGradient id="msSwooshGradAccMob" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#2563eb" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.15" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M 0,0 L 400,0 L 400,110 C 280,165 120,165 0,110 Z"
-                    fill="url(#msSwooshGradAccMob)"
-                  />
-                  <path
-                    d="M 0,0 L 400,0 L 400,95 C 280,148 120,148 0,95 Z"
-                    fill="url(#msBlueGradAccMob)"
-                  />
-                </svg>
-
-                <div className="ms-card-visual-inner">
-                  <div className="ms-visual-emblem" aria-hidden="true">
-                    <svg className="ms-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="20" x2="18" y2="10" />
-                      <line x1="12" y1="20" x2="12" y2="4" />
-                      <line x1="6" y1="20" x2="6" y2="14" />
+                {/* Floating white card */}
+                <div className="ms-home-intro-badge">
+                  <div className="ms-home-intro-pin-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
                     </svg>
                   </div>
-                  <div className="ms-visual-brand">
-                    <span className="ms-visual-kicker">Practice 01</span>
-                    <h4 className="ms-visual-title">Financial Clarity</h4>
-                    <p className="ms-visual-tagline">Accounting & Reporting</p>
+                  <div className="ms-home-intro-badge-content">
+                    <p className="ms-home-intro-badge-title">Norwest Business Park</p>
+                    <p className="ms-home-intro-badge-sub">Bella Vista, Sydney</p>
                   </div>
-                  <span className="ms-visual-badge">Annual Statements</span>
                 </div>
               </div>
+            </Reveal>
 
-              <div className="ms-card-info">
-                <div className="ms-card-content">
-                  <h3 className="ms-card-title">Accounting</h3>
-                  <div className="ms-card-rule" aria-hidden="true" />
-                  <p className="ms-card-desc">
-                    Professional accounting will give you the resources to create sound plans to cut costs, increase profits and make your business grow.
-                  </p>
-                </div>
-                <Link to="/services/accounting" className="ms-card-link">
-                  <span>Accounting services overview</span>
-                  <span className="ms-card-arrow" aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Taxation Card */}
-            <div className="ms-practice-card">
-              <div className="ms-card-visual-wrap">
-                {/* Desktop vertical curve SVG */}
-                <svg className="ms-card-curve-svg" viewBox="0 0 240 320" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="msBlueGradTax" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#002366" />
-                      <stop offset="55%" stopColor="#003082" />
-                      <stop offset="100%" stopColor="#0040a8" />
-                    </linearGradient>
-                    <linearGradient id="msSwooshGradTax" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#2563eb" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.2" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M 0,0 L 205,0 C 248,80 242,220 185,320 L 0,320 Z"
-                    fill="url(#msSwooshGradTax)"
-                    className="ms-card-swoosh"
-                  />
-                  <path
-                    d="M 0,0 L 175,0 C 220,85 212,225 155,320 L 0,320 Z"
-                    fill="url(#msBlueGradTax)"
-                  />
-                </svg>
-
-                {/* Mobile horizontal curve SVG */}
-                <svg className="ms-card-curve-svg-mobile" viewBox="0 0 400 155" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="msBlueGradTaxMob" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#002366" />
-                      <stop offset="60%" stopColor="#003082" />
-                      <stop offset="100%" stopColor="#0040a8" />
-                    </linearGradient>
-                    <linearGradient id="msSwooshGradTaxMob" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#2563eb" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.2" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M 0,0 L 400,0 L 400,110 C 280,165 120,165 0,110 Z"
-                    fill="url(#msSwooshGradTaxMob)"
-                  />
-                  <path
-                    d="M 0,0 L 400,0 L 400,95 C 280,148 120,148 0,95 Z"
-                    fill="url(#msBlueGradTaxMob)"
-                  />
-                </svg>
-
-                <div className="ms-card-visual-inner">
-                  <div className="ms-visual-emblem" aria-hidden="true">
-                    <svg className="ms-visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="4" y="2" width="16" height="20" rx="2" />
-                      <line x1="8" y1="6" x2="16" y2="6" />
-                      <line x1="8" y1="10" x2="16" y2="10" />
-                      <line x1="8" y1="14" x2="12" y2="14" />
-                      <circle cx="16" cy="16" r="1.5" />
-                    </svg>
-                  </div>
-                  <div className="ms-visual-brand">
-                    <span className="ms-visual-kicker">Practice 02</span>
-                    <h4 className="ms-visual-title">Strategic Tax</h4>
-                    <p className="ms-visual-tagline">Compliance & Returns</p>
-                  </div>
-                  <span className="ms-visual-badge">ATO Compliant</span>
-                </div>
-              </div>
-
-              <div className="ms-card-info">
-                <div className="ms-card-content">
-                  <h3 className="ms-card-title">Taxation</h3>
-                  <div className="ms-card-rule" aria-hidden="true" />
-                  <p className="ms-card-desc">
-                    What is your tax strategy? Let our professionals guide you to ethically reduce your taxes while growing your business.
-                  </p>
-                </div>
-                <Link to="/services/taxation" className="ms-card-link">
-                  <span>Taxation services overview</span>
-                  <span className="ms-card-arrow" aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Consultation Call to Action */}
-      <section className="section" data-theme="light" style={{ textAlign: 'center', background: '#fff' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', marginBottom: '1.25rem' }}>
-            Ready to discuss your business?
-          </h2>
-          <p style={{ fontSize: '1.1875rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            Schedule an introductory consultation with our experienced team in Norwest Business Park.
-          </p>
-          <Link to="/contact" className="btn btn-primary" style={{ padding: '0.95rem 2.25rem', fontSize: '1rem' }}>
-            Book a Consultation
-          </Link>
+      {/* ====================================================================
+          B) STATS STRIP
+          ==================================================================== */}
+      <section className="ms-home-stats-strip" aria-label="Key firm figures">
+        <Reveal>
+          <div className="ms-home-stats-grid">
+            <div className="ms-home-stat-col">
+              <span className="ms-home-stat-num">
+                <CountUp end={10} suffix="+" />
+              </span>
+              <span className="ms-home-stat-label">Years of Experience</span>
+            </div>
+            <div className="ms-home-stat-col">
+              <span className="ms-home-stat-num">
+                <CountUp end={3} />
+              </span>
+              <span className="ms-home-stat-label">Practice Areas</span>
+            </div>
+            <div className="ms-home-stat-col">
+              <span className="ms-home-stat-num">
+                <CountUp end={7} />
+              </span>
+              <span className="ms-home-stat-label">Client Types</span>
+            </div>
+            <div className="ms-home-stat-col">
+              <span className="ms-home-stat-num">
+                <CountUp end={4} />
+              </span>
+              <span className="ms-home-stat-label">Suburbs Served</span>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ====================================================================
+          C) PRACTICE AREAS
+          ==================================================================== */}
+      <section className="ms-home-section ms-home-section--light" data-theme="light">
+        <div className="ms-home-container">
+          <Reveal>
+            <div className="ms-home-practice-header">
+              <p className="ms-home-eyebrow">Core capabilities</p>
+              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
+                Our Three Practice Areas
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="ms-home-practice-grid">
+            {practiceAreas.map((area, idx) => (
+              <Reveal key={area.num} delay={idx * 120} style={{ height: '100%' }}>
+                <article className="ms-home-practice-card">
+                  <div className="ms-home-practice-media">
+                    <img
+                      src={area.image}
+                      alt={area.alt}
+                      className="ms-home-practice-img"
+                      width={1400}
+                      height={933}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="ms-home-practice-body">
+                    <div className="ms-home-practice-top">
+                      <span className="ms-home-practice-tag">{area.num}</span>
+                    </div>
+                    <h3 className="ms-home-practice-title">{area.title}</h3>
+                    <ul className="ms-home-practice-bullets">
+                      {area.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="ms-home-practice-bullet">
+                          <span className="ms-home-practice-bullet-dot" aria-hidden="true">&bull;</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to={area.linkUrl} className="ms-home-practice-link">
+                      <span>{area.linkText}</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* ====================================================================
+          D) WHO WE WORK WITH
+          ==================================================================== */}
+      <section className="ms-home-section ms-home-section--light" data-theme="light">
+        <div className="ms-home-container">
+          <Reveal>
+            <div className="ms-home-who-header">
+              <p className="ms-home-eyebrow">Who We Work With</p>
+              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
+                Accounting and tax for every kind of client
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="ms-home-who-grid">
+            {clientTypes.map((item, idx) => (
+              <Reveal key={idx} delay={idx * 60} className={item.rowClass}>
+                <div className="ms-home-who-card">
+                  <h3 className="ms-home-who-card-title">{item.title}</h3>
+                  <p className="ms-home-who-card-desc">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          E) MEET MANDAR (Team component rendered exactly ONCE)
+          ==================================================================== */}
+      <Team />
+
+      {/* ====================================================================
+          F) HOW WE WORK
+          ==================================================================== */}
+      <section className="ms-home-section ms-home-section--white" data-theme="light">
+        <div className="ms-home-container">
+          <Reveal>
+            <div className="ms-home-process-header">
+              <p className="ms-home-eyebrow">Our Process</p>
+              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
+                Simple from the first call
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="ms-home-process-track">
+            <div className="ms-home-process-line" aria-hidden="true" />
+            {workSteps.map((step, idx) => (
+              <Reveal key={step.num} delay={idx * 120} className="ms-home-process-step">
+                <div className="ms-home-process-circle">{step.num}</div>
+                <h3 className="ms-home-process-title">{step.title}</h3>
+                <p className="ms-home-process-desc">{step.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====================================================================
+          G) CONTACT BAND
+          ==================================================================== */}
+      <ContactBand />
+
+      {/* Hero section responsive style overrides (Untouched) */}
       <style>{`
         @media (max-width: 1024px) {
           .hero-section {
@@ -247,6 +350,6 @@ export default function Home() {
           }
         }
       `}</style>
-    </>
+    </div>
   );
 }
