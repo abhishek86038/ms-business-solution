@@ -217,6 +217,33 @@
   color: #727b8e;
 }
 
+/* Front Card Media & Content */
+.ms-tax-card-media {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
+  position: relative;
+  background-color: #e8ecf8;
+  flex-shrink: 0;
+}
+
+.ms-tax-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.ms-tax-card-content {
+  padding: 22px 24px 68px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 /* Back Face Styles for FlipCard */
 .ms-tax-card-date--back {
   background-color: rgba(47, 63, 255, 0.22);

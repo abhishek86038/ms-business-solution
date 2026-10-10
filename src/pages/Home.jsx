@@ -436,7 +436,7 @@ export default function Home() {
             {latestTaxUpdates.map((item, idx) => (
               <Reveal key={item.id} delay={idx * 100} style={{ height: '100%' }}>
                 <FlipCard
-                  minHeight={440}
+                  minHeight={480}
                   borderRadius={22}
                   frontLabel="Read more"
                   backLabel="Back to summary"
@@ -446,9 +446,21 @@ export default function Home() {
                   backColor="#8ba1ff"
                   front={
                     <>
-                      <span className="ms-home-teaser-date">{item.date}</span>
-                      <h3 className="ms-home-teaser-title">{item.title}</h3>
-                      <p className="ms-home-teaser-summary">{item.summary}</p>
+                      {item.image && (
+                        <div className="ms-home-teaser-media">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="ms-home-teaser-img"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      <div className="ms-home-teaser-content">
+                        <span className="ms-home-teaser-date">{item.date}</span>
+                        <h3 className="ms-home-teaser-title">{item.title}</h3>
+                        <p className="ms-home-teaser-summary">{item.summary}</p>
+                      </div>
                     </>
                   }
                   back={

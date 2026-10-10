@@ -28,7 +28,7 @@ export default function TaxUpdate() {
             {taxUpdates.map((item, idx) => (
               <Reveal key={item.id} delay={(idx % 2) * 120} style={{ height: '100%' }}>
                 <FlipCard
-                  minHeight={420}
+                  minHeight={480}
                   borderRadius={22}
                   frontLabel="Read more"
                   backLabel="Back to summary"
@@ -38,11 +38,23 @@ export default function TaxUpdate() {
                   backColor="#8ba1ff"
                   front={
                     <>
-                      <div className="ms-tax-card-header">
-                        <span className="ms-tax-card-date">{item.date}</span>
+                      {item.image && (
+                        <div className="ms-tax-card-media">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="ms-tax-card-img"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      <div className="ms-tax-card-content">
+                        <div className="ms-tax-card-header">
+                          <span className="ms-tax-card-date">{item.date}</span>
+                        </div>
+                        <h2 className="ms-tax-card-title">{item.title}</h2>
+                        <p className="ms-tax-card-summary">{item.summary}</p>
                       </div>
-                      <h2 className="ms-tax-card-title">{item.title}</h2>
-                      <p className="ms-tax-card-summary">{item.summary}</p>
                     </>
                   }
                   back={

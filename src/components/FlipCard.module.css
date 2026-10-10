@@ -46,7 +46,6 @@
   -webkit-transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
-  padding: 32px 28px 76px 28px;
   box-sizing: border-box;
   box-shadow: 0 14px 34px rgba(20, 30, 90, 0.12);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -58,6 +57,7 @@
   border: 1px solid rgba(220, 227, 243, 0.85);
   cursor: pointer;
   background-color: #ffffff;
+  padding: 0;
 }
 
 .front:hover {
@@ -69,6 +69,7 @@
   -webkit-transform: rotateY(180deg);
   border: 1px solid rgba(47, 63, 255, 0.32);
   box-shadow: 0 18px 44px rgba(10, 16, 60, 0.28);
+  padding: 30px 26px 76px 26px;
 }
 
 /* Toggle flip pill button at bottom-right (matching reference video) */

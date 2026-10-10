@@ -1,9 +1,12 @@
+import { dividendWashing, interestDeduction, overseasDoctor } from './images';
+
 export const taxUpdates = [
   {
     id: 'dividend-washing-rule',
     date: 'July 2013',
     title: 'Specific tax rule to prevent dividend washing',
     summary: 'The Assistant Treasurer has announced that the Government will introduce a specific tax rule to prevent dividend washing.',
+    image: dividendWashing,
     body: [
       'The Assistant Treasurer has announced that the Government will introduce a specific tax rule to prevent "dividend washing".',
       'Dividend washing typically involves an investor selling shares with the dividend attached and buying equivalent shares without the dividend, allowing two sets of franking credits to be claimed on what is effectively the same parcel of shares.',
@@ -15,6 +18,7 @@ export const taxUpdates = [
     date: 'July 2013',
     title: 'Individual denied interest deduction',
     summary: 'The Administrative Appeals Tribunal (AAT) has denied a taxpayer\'s claim for interest deductions incurred in relation to rental properties owned by a trust.',
+    image: interestDeduction,
     body: [
       'The Administrative Appeals Tribunal (AAT) has denied a taxpayer\'s claim for interest deductions incurred in relation to rental properties owned by a trust.',
       'The Tribunal affirmed that interest deductions cannot be claimed personally where the property ownership and borrowing structures do not satisfy statutory deductibility criteria under tax law.',
@@ -26,6 +30,7 @@ export const taxUpdates = [
     date: 'July 2013',
     title: 'Overseas doctor a tax resident of Australia',
     summary: 'A doctor has been unsuccessful before the AAT in arguing that he should be declared a non-resident of Australia for tax purposes.',
+    image: overseasDoctor,
     body: [
       'A doctor has been unsuccessful before the AAT in arguing that he should be declared a non-resident of Australia for tax purposes.',
       'The decision highlights the comprehensive tests applied by the ATO and tribunals when establishing residency for Australian taxation purposes, including domicile and enduring ties to Australia.'
