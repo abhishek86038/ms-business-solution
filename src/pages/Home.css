@@ -280,19 +280,20 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   border: 1px solid rgba(220, 227, 243, 0.8);
+  width: 100%;
   height: 100%;
+  user-select: none;
 }
 
 .ms-home-practice-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 42px rgba(20, 30, 90, 0.16);
+  box-shadow: 0 20px 42px rgba(20, 30, 90, 0.2);
 }
 
 .ms-home-practice-media {
   width: 100%;
-  height: 210px;
+  height: 190px;
   overflow: hidden;
   position: relative;
   background-color: #0a1024;
@@ -311,7 +312,7 @@
 }
 
 .ms-home-practice-body {
-  padding: 32px 28px;
+  padding: 26px 24px 28px;
   display: flex;
   flex-direction: column;
   flex: 1;

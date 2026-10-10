@@ -6,6 +6,7 @@ import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import ContactBand from '../components/ContactBand';
 import ChladniBackground from '../components/chladni/ChladniBackground';
+import RoundCarousel from '../components/RoundCarousel';
 import { office1, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
@@ -281,10 +282,20 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="ms-home-practice-grid">
-            {practiceAreas.map((area, idx) => (
-              <Reveal key={area.num} delay={idx * 110} style={{ height: '100%' }}>
-                <article className="ms-home-practice-card">
+          <Reveal delay={110}>
+            <RoundCarousel
+              spacing={2.8}
+              speed={4.5}
+              direction="right"
+              drag={true}
+              sensitivity={4.5}
+              tilt={-6}
+              perspective={2400}
+              cornerRadius={22}
+              background="transparent"
+            >
+              {practiceAreas.map((area) => (
+                <article key={area.num} className="ms-home-practice-card">
                   <div className="ms-home-practice-media">
                     <img
                       src={area.image}
@@ -293,6 +304,7 @@ export default function Home() {
                       width={1400}
                       height={933}
                       loading="lazy"
+                      draggable={false}
                     />
                   </div>
                   <div className="ms-home-practice-body">
@@ -314,9 +326,9 @@ export default function Home() {
                     </Link>
                   </div>
                 </article>
-              </Reveal>
-            ))}
-          </div>
+              ))}
+            </RoundCarousel>
+          </Reveal>
         </div>
       </section>
 
