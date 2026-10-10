@@ -708,8 +708,38 @@
 }
 
 /* ==========================================================================
-   8) TAX UPDATE TEASER
+   8) TAX UPDATE TEASER (with PhotonGrid animated background)
    ========================================================================== */
+.ms-home-tax-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #020617;
+}
+
+.ms-home-tax-section .ms-home-heading {
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(34, 211, 238, 0.25);
+}
+
+.ms-home-tax-section .ms-home-subheading {
+  color: #94a3b8;
+}
+
+.ms-home-tax-inner {
+  padding: 100px 24px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .ms-home-tax-inner {
+    padding: 72px 20px;
+  }
+}
+
 .ms-home-teaser-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

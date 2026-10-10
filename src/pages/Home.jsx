@@ -9,6 +9,7 @@ import ChladniBackground from '../components/chladni/ChladniBackground';
 import ExpandingPanels from '../components/ExpandingPanels';
 import FlipCard from '../components/FlipCard';
 import LightBeams from '../components/LightBeams';
+import PhotonGrid from '../components/PhotonGrid';
 import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
@@ -417,87 +418,99 @@ export default function Home() {
       <Team />
 
       {/* ====================================================================
-          8. TAX UPDATE TEASER
+          8. TAX UPDATE TEASER (PhotonGrid animated perspective background)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--light" data-theme="light">
-        <div className="ms-home-container">
-          <Reveal>
-            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
-              <h2 className="ms-home-heading" style={{ marginBottom: '12px' }}>
-                Tax Update
-              </h2>
-              <p className="ms-home-subheading" style={{ marginBottom: 0 }}>
-                Key tax and compliance news for Australian businesses and individuals.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="ms-home-teaser-grid">
-            {latestTaxUpdates.map((item, idx) => (
-              <Reveal key={item.id} delay={idx * 100} style={{ height: '100%' }}>
-                <FlipCard
-                  minHeight={480}
-                  borderRadius={22}
-                  frontLabel="Read more"
-                  backLabel="Back to summary"
-                  frontBackground="#ffffff"
-                  backBackground="linear-gradient(155deg, #0e173b 0%, #060b1e 100%)"
-                  frontColor="#2f3fff"
-                  backColor="#8ba1ff"
-                  front={
-                    <>
-                      {item.image && (
-                        <div className="ms-home-teaser-media">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="ms-home-teaser-img"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                      <div className="ms-home-teaser-content">
-                        <span className="ms-home-teaser-date">{item.date}</span>
-                        <h3 className="ms-home-teaser-title">{item.title}</h3>
-                        <p className="ms-home-teaser-summary">{item.summary}</p>
-                      </div>
-                    </>
-                  }
-                  back={
-                    <>
-                      <span className="ms-home-teaser-date ms-home-teaser-date--back">
-                        {item.date}
-                      </span>
-                      <h3 className="ms-home-teaser-title ms-home-teaser-title--back">
-                        {item.title}
-                      </h3>
-                      <div className="ms-home-teaser-body-text">
-                        {item.body && item.body.length > 0 ? (
-                          item.body.map((para, pIdx) => (
-                            <p key={pIdx} className="ms-home-teaser-para">
-                              {para}
-                            </p>
-                          ))
-                        ) : (
-                          <p className="ms-home-teaser-para">{item.summary}</p>
-                        )}
-                      </div>
-                    </>
-                  }
-                />
+      <section className="ms-home-tax-section" data-theme="dark">
+        <PhotonGrid
+          colors={["#020617", "#22d3ee", "#e879f9"]}
+          intensity={0.9}
+          tilt={1.1}
+          parallax={1.2}
+          speed={0.6}
+          density={1.4}
+          minHeight={600}
+        >
+          <div className="ms-home-tax-inner">
+            <div className="ms-home-container">
+              <Reveal>
+                <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
+                  <h2 className="ms-home-heading" style={{ marginBottom: '12px' }}>
+                    Tax Update
+                  </h2>
+                  <p className="ms-home-subheading" style={{ marginBottom: 0 }}>
+                    Key tax and compliance news for Australian businesses and individuals.
+                  </p>
+                </div>
               </Reveal>
-            ))}
-          </div>
 
-          <Reveal delay={200}>
-            <div className="ms-home-teaser-cta">
-              <Link to="/tax-update" className="ms-home-teaser-btn">
-                <span>See all tax updates</span>
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
+              <div className="ms-home-teaser-grid">
+                {latestTaxUpdates.map((item, idx) => (
+                  <Reveal key={item.id} delay={idx * 100} style={{ height: '100%' }}>
+                    <FlipCard
+                      minHeight={480}
+                      borderRadius={22}
+                      frontLabel="Read more"
+                      backLabel="Back to summary"
+                      frontBackground="#ffffff"
+                      backBackground="linear-gradient(155deg, #0e173b 0%, #060b1e 100%)"
+                      frontColor="#2f3fff"
+                      backColor="#8ba1ff"
+                      front={
+                        <>
+                          {item.image && (
+                            <div className="ms-home-teaser-media">
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                className="ms-home-teaser-img"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          <div className="ms-home-teaser-content">
+                            <span className="ms-home-teaser-date">{item.date}</span>
+                            <h3 className="ms-home-teaser-title">{item.title}</h3>
+                            <p className="ms-home-teaser-summary">{item.summary}</p>
+                          </div>
+                        </>
+                      }
+                      back={
+                        <>
+                          <span className="ms-home-teaser-date ms-home-teaser-date--back">
+                            {item.date}
+                          </span>
+                          <h3 className="ms-home-teaser-title ms-home-teaser-title--back">
+                            {item.title}
+                          </h3>
+                          <div className="ms-home-teaser-body-text">
+                            {item.body && item.body.length > 0 ? (
+                              item.body.map((para, pIdx) => (
+                                <p key={pIdx} className="ms-home-teaser-para">
+                                  {para}
+                                </p>
+                              ))
+                            ) : (
+                              <p className="ms-home-teaser-para">{item.summary}</p>
+                            )}
+                          </div>
+                        </>
+                      }
+                    />
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal delay={200}>
+                <div className="ms-home-teaser-cta">
+                  <Link to="/tax-update" className="ms-home-teaser-btn">
+                    <span>See all tax updates</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </PhotonGrid>
       </section>
 
       {/* ====================================================================
