@@ -53,34 +53,26 @@
   box-shadow: 0 18px 40px rgba(10, 16, 60, 0.22);
 }
 
-/* Ambient shadow / vignette */
+/* Ambient shadow / vignette — removed blue tint */
 .shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 38, 0.22) 0%, rgba(8, 14, 38, 0.45) 48%, rgba(5, 9, 26, 0.92) 100%);
-  pointer-events: none;
-  z-index: 1;
-  transition: background 0.4s ease;
+  display: none;
 }
 
-.panel[data-active="true"] .shade {
-  background: linear-gradient(180deg, rgba(8, 14, 38, 0.15) 0%, rgba(8, 14, 38, 0.38) 48%, rgba(5, 8, 24, 0.9) 100%);
-}
-
-/* Optional background image layer */
+/* Background image layer in original, natural colors */
 .image {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.38;
-  transition: opacity 0.5s ease, transform 0.6s ease;
+  opacity: 1;
+  filter: none;
+  transition: transform 0.6s ease;
   z-index: 0;
 }
 
 .panel:hover .image,
 .panel[data-active="true"] .image {
-  opacity: 0.55;
+  opacity: 1;
   transform: scale(1.03);
 }
 
@@ -94,7 +86,8 @@
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.72);
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 0.95);
   transition: color 0.3s ease;
   pointer-events: none;
 }
@@ -113,6 +106,7 @@
   margin: 0;
   z-index: 2;
   pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.95);
   transition: 
     transform 0.55s cubic-bezier(0.25, 1, 0.35, 1),
     font-size 0.55s cubic-bezier(0.25, 1, 0.35, 1),
@@ -129,7 +123,7 @@
   transform: translateX(-12px) rotate(-90deg);
   font-size: 1.28rem;
   white-space: nowrap;
-  opacity: 0.95;
+  opacity: 1;
 }
 
 /* Active panel: large horizontal title at bottom-left */
@@ -142,7 +136,7 @@
   line-height: 1.25;
   white-space: normal;
   max-width: min(580px, calc(100% - 72px));
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.95);
   opacity: 1;
 }
 
@@ -157,7 +151,8 @@
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.58;
-  color: rgba(255, 255, 255, 0.88);
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.95);
   pointer-events: none;
   opacity: 0;
   transform: translateY(14px);

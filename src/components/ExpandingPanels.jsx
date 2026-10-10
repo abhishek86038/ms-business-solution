@@ -83,7 +83,7 @@ export default function ExpandingPanels({
               event.currentTarget.parentElement?.children[next]?.focus();
             }}
             style={{
-              background: item.background || "#121b42",
+              background: item.image ? "#050814" : (item.background || "#050814"),
             }}
           >
             {item.image && (

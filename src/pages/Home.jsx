@@ -110,28 +110,24 @@ export default function Home() {
       title: 'Qualified and local',
       desc: 'Led by Mandar Gokhale, a Chartered Accountant, in Norwest Business Park.',
       image: office1,
-      background: 'linear-gradient(135deg, #1b2f7a 0%, #0d1742 100%)'
     },
     {
       badge: '02',
       title: 'One team for accounts and tax',
       desc: 'Your accounting, tax returns, BAS and company matters handled in one place.',
       image: accounting,
-      background: 'linear-gradient(135deg, #18386b 0%, #0a1b38 100%)'
     },
     {
       badge: '03',
       title: 'Clear communication',
       desc: 'Plain language, no jargon.',
       image: office2,
-      background: 'linear-gradient(135deg, #162463 0%, #0b1233 100%)'
     },
     {
       badge: '04',
       title: 'Compliance first',
       desc: 'Lodgements and deadlines kept in order so nothing is missed.',
       image: business,
-      background: 'linear-gradient(135deg, #192754 0%, #080f24 100%)'
     }
   ];
 
