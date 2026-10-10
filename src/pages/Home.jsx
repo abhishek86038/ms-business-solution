@@ -6,7 +6,8 @@ import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import ContactBand from '../components/ContactBand';
 import ChladniBackground from '../components/chladni/ChladniBackground';
-import { office1, accounting, taxation, business } from '../data/images';
+import ExpandingPanels from '../components/ExpandingPanels';
+import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
 
@@ -104,22 +105,30 @@ export default function Home() {
     {
       badge: '01',
       title: 'Qualified and local',
-      desc: 'Led by Mandar Gokhale, a Chartered Accountant, in Norwest Business Park.'
+      desc: 'Led by Mandar Gokhale, a Chartered Accountant, in Norwest Business Park.',
+      image: office1,
+      background: 'linear-gradient(135deg, #1b2f7a 0%, #0d1742 100%)'
     },
     {
       badge: '02',
       title: 'One team for accounts and tax',
-      desc: 'Your accounting, tax returns, BAS and company matters handled in one place.'
+      desc: 'Your accounting, tax returns, BAS and company matters handled in one place.',
+      image: accounting,
+      background: 'linear-gradient(135deg, #18386b 0%, #0a1b38 100%)'
     },
     {
       badge: '03',
       title: 'Clear communication',
-      desc: 'Plain language, no jargon.'
+      desc: 'Plain language, no jargon.',
+      image: office2,
+      background: 'linear-gradient(135deg, #162463 0%, #0b1233 100%)'
     },
     {
       badge: '04',
       title: 'Compliance first',
-      desc: 'Lodgements and deadlines kept in order so nothing is missed.'
+      desc: 'Lodgements and deadlines kept in order so nothing is missed.',
+      image: business,
+      background: 'linear-gradient(135deg, #192754 0%, #080f24 100%)'
     }
   ];
 
@@ -346,7 +355,7 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          5. WHY M&S (2x2 Grid with Blue Badges)
+          5. WHY M&S (Horizontal Expanding Panels matching card.mp4)
           ==================================================================== */}
       <section className="ms-home-section ms-home-section--white" data-theme="light">
         <div className="ms-home-container">
@@ -358,17 +367,9 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="ms-home-why-grid">
-            {whyPoints.map((point, idx) => (
-              <Reveal key={point.badge} delay={idx * 100} style={{ height: '100%' }}>
-                <div className="ms-home-why-card">
-                  <div className="ms-home-why-badge">{point.badge}</div>
-                  <h3 className="ms-home-why-title">{point.title}</h3>
-                  <p className="ms-home-why-desc">{point.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={120}>
+            <ExpandingPanels items={whyPoints} height={420} borderRadius={22} expandRatio={4.8} />
+          </Reveal>
         </div>
       </section>
 
