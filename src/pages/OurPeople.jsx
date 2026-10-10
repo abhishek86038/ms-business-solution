@@ -136,15 +136,6 @@ export default function OurPeople() {
               </p>
               <Link to="/services/taxation">Taxation services →</Link>
             </li>
-            <li className="ms-pf-row" data-r style={{ '--i': '3' }}>
-              <span className="ms-pf-num">03</span>
-              <h3>Financial advice</h3>
-              <p>
-                Guidance from experienced financial planner associates of M&amp;S, including planning for your
-                retirement, to help you save money.
-              </p>
-              <Link to="/services">All services →</Link>
-            </li>
           </ul>
         </div>
       </section>

@@ -131,7 +131,7 @@ export default function Services() {
       {/* CTA */}
       <section className="section section-alt" style={{ textAlign: 'center' }}>
         <div className="container" style={{ maxWidth: '800px' }}>
-          <h2>Need tailored financial advice?</h2>
+          <h2>Need tailored accounting or tax solutions?</h2>
           <p style={{ margin: '0 auto 2rem auto', fontSize: '1.125rem' }}>
             Book a confidential consultation with our Chartered Accountants in Bella Vista.
           </p>

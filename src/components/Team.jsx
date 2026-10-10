@@ -352,7 +352,7 @@ function Team() {
 
                         <ul className="ms-people-stats" data-r style={{ '--i': '3' }}>
                             <li><CountUp end={10} suffix="+" run={inView} /><span>Years of Experience</span></li>
-                            <li><CountUp end={3} run={inView} /><span>Core Services</span></li>
+                            <li><CountUp end={3} run={inView} /><span>Practice Areas</span></li>
                             <li><CountUp end={7} run={inView} /><span>Client Types Served</span></li>
                         </ul>
 

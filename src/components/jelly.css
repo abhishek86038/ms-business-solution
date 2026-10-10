@@ -1,0 +1,64 @@
+.ms-jelly{--h:58px;--w:260px;
+  position:relative;display:inline-grid;place-items:center;height:var(--h);width:var(--w);padding:0;border:0;border-radius:999px;
+  cursor:pointer;color:#fff;font:600 17px/1 Inter,system-ui,sans-serif;letter-spacing:.01em;isolation:isolate;
+  -webkit-tap-highlight-color:transparent;
+  background:linear-gradient(90deg,#1a1fd2 0%,#3345ff 42%,#1610c0 100%);
+  box-shadow:0 0 26px rgba(58,75,255,.55),0 0 80px rgba(40,40,255,.35),0 10px 24px rgba(0,0,40,.5);
+  transition:width .6s cubic-bezier(.34,1.45,.5,1),transform .35s cubic-bezier(.34,1.8,.5,1),box-shadow .3s}
+.ms-jelly *{box-sizing:border-box}
+/* glossy highlight blob */
+.ms-jelly::before{content:"";position:absolute;z-index:-1;left:16%;top:8%;width:46%;height:46%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.6),rgba(255,255,255,0) 70%);filter:blur(5px);
+  transition:left .6s cubic-bezier(.34,1.45,.5,1),width .6s cubic-bezier(.34,1.45,.5,1)}
+/* soft inner rim light */
+.ms-jelly::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(170,180,255,.28),inset 0 0 16px rgba(150,165,255,.55),inset 0 -7px 14px rgba(8,4,110,.55)}
+.ms-jelly:hover{transform:scale(1.05,.94);box-shadow:0 0 34px rgba(70,90,255,.7),0 0 100px rgba(40,40,255,.45),0 10px 24px rgba(0,0,40,.5)}
+.ms-jelly:active{transform:scale(1.1,.86)}
+.ms-jelly:focus-visible{outline:2px solid #9f98ff;outline-offset:5px}
+.ms-jelly.is-wobble{animation:ms-wobble .7s cubic-bezier(.3,.6,.4,1)}
+@keyframes ms-wobble{0%{transform:scale(1.1,.86)}28%{transform:scale(.92,1.1)}52%{transform:scale(1.04,.97)}74%{transform:scale(.99,1.01)}100%{transform:scale(1)}}
+
+.ms-jelly-label{white-space:nowrap;transition:opacity .2s,transform .35s cubic-bezier(.34,1.5,.5,1)}
+.ms-jelly svg{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;opacity:0;pointer-events:none;overflow:visible;transition:opacity .2s}
+
+/* circle states (loading + success) */
+.ms-jelly[data-state=loading],.ms-jelly[data-state=success]{width:var(--h)}
+.ms-jelly[data-state=loading]::before,.ms-jelly[data-state=success]::before{left:20%;width:54%}
+.ms-jelly[data-state=loading] .ms-jelly-label,.ms-jelly[data-state=success] .ms-jelly-label{opacity:0;transform:scale(.5)}
+
+/* spinner */
+.ms-spin{animation:ms-rot .85s linear infinite}
+.ms-spin circle{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-dasharray:24 80}
+.ms-jelly[data-state=loading] .ms-spin{opacity:1}
+@keyframes ms-rot{to{transform:rotate(360deg)}}
+
+/* check mark */
+.ms-check path{fill:none;stroke:#fff;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30}
+.ms-jelly[data-state=success] .ms-check{opacity:1}
+.ms-jelly[data-state=success] .ms-check path{animation:ms-draw .45s ease-out .12s forwards}
+@keyframes ms-draw{to{stroke-dashoffset:0}}
+
+/* burst dots */
+.ms-dots{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+.ms-dots i{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#3a4bff;box-shadow:0 0 10px rgba(80,100,255,.9);
+  opacity:0;transform:rotate(var(--a)) translateY(-22px) scale(.8)}
+.ms-jelly[data-state=success] .ms-dots i{animation:ms-burst .95s cubic-bezier(.2,.8,.3,1) .08s both}
+@keyframes ms-burst{0%{opacity:1;transform:rotate(var(--a)) translateY(-22px) scale(.8)}55%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateY(-64px) scale(.2)}}
+
+.ms-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media(prefers-reduced-motion:reduce){
+  .ms-jelly,.ms-jelly::before,.ms-jelly-label{transition-duration:.01s}
+  .ms-jelly.is-wobble,.ms-dots i{animation:none!important}
+  .ms-jelly:hover,.ms-jelly:active{transform:none}
+}
+
+/* extras for the React component */
+.ms-jelly{text-decoration:none}
+.ms-jelly-slot{display:inline-flex;justify-content:center;flex:none;max-width:100%}
+.ms-jelly-label{display:inline-flex;align-items:center;gap:10px}
+/* use on light backgrounds: softer glow */
+.ms-jelly--light{box-shadow:0 16px 30px -10px rgba(47,63,255,.65),0 0 0 1px rgba(22,16,192,.25)}
+.ms-jelly--light:hover{box-shadow:0 20px 38px -10px rgba(47,63,255,.8),0 0 0 1px rgba(22,16,192,.3)}
+
