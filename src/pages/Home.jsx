@@ -10,6 +10,7 @@ import ExpandingPanels from '../components/ExpandingPanels';
 import FlipCard from '../components/FlipCard';
 import LightBeams from '../components/LightBeams';
 import PhotonGrid from '../components/PhotonGrid';
+import HowWeWork from '../components/howwework/HowWeWork';
 import { ClientsSection, FaqSection } from '../components/emboss/EmbossSections';
 import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
@@ -86,24 +87,6 @@ export default function Home() {
       title: 'Compliance first',
       desc: 'Lodgements and deadlines kept in order so nothing is missed.',
       image: business,
-    }
-  ];
-
-  const workSteps = [
-    {
-      num: '01',
-      title: 'Introductory consultation',
-      desc: 'We learn about your business and goals.'
-    },
-    {
-      num: '02',
-      title: 'Review of your position',
-      desc: 'We look at your accounts, structure and tax.'
-    },
-    {
-      num: '03',
-      title: 'Clear next steps',
-      desc: 'You get a plan and we get to work.'
     }
   ];
 
@@ -296,30 +279,9 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          6. HOW WE WORK (3 Steps with Connecting Line)
+          6. HOW WE WORK (Simple from the first call animated timeline)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--light" data-theme="light">
-        <div className="ms-home-container">
-          <Reveal>
-            <div className="ms-home-process-header">
-              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
-                Simple from the first call
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="ms-home-process-track">
-            <div className="ms-home-process-line" aria-hidden="true" />
-            {workSteps.map((step, idx) => (
-              <Reveal key={step.num} delay={idx * 110} className="ms-home-process-step">
-                <div className="ms-home-process-circle">{step.num}</div>
-                <h3 className="ms-home-process-title">{step.title}</h3>
-                <p className="ms-home-process-desc">{step.desc}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowWeWork />
 
       {/* ====================================================================
           7. MEET MANDAR (Team component rendered exactly ONCE)
