@@ -14,7 +14,7 @@ export default function FlipCard({
   backColor = "#8ba1ff",
   frontLabel = "Read more",
   backLabel = "Back to summary",
-  minHeight = 390,
+  minHeight = 300,
   borderRadius = 22,
   className = "",
   style,
@@ -38,7 +38,7 @@ export default function FlipCard({
       <div className={styles.rotator}>
         <div
           className={`${styles.face} ${styles.front}`}
-          style={{ background: frontBackground }}
+          style={{ background: frontBackground, color: frontColor }}
           inert={active ? "" : undefined}
           aria-hidden={active}
           onClick={(e) => {
@@ -51,7 +51,7 @@ export default function FlipCard({
         </div>
         <div
           className={`${styles.face} ${styles.back}`}
-          style={{ background: backBackground }}
+          style={{ background: backBackground, color: backColor }}
           inert={!active ? "" : undefined}
           aria-hidden={!active}
         >
@@ -73,7 +73,7 @@ export default function FlipCard({
           height="18"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.75"
+          strokeWidth="1.5"
           aria-hidden="true"
         >
           <path d="M19 8a8 8 0 1 0 1 7M19 3v5h-5" />
