@@ -12,6 +12,7 @@ import Accounting from './pages/Accounting';
 import Taxation from './pages/Taxation';
 import Contact from './pages/Contact';
 import OurPeople from './pages/OurPeople';
+import TaxUpdate from './pages/TaxUpdate';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/accounting" element={<Accounting />} />
             <Route path="/services/taxation" element={<Taxation />} />
+            <Route path="/tax-update" element={<TaxUpdate />} />
             <Route path="/our-people" element={<OurPeople />} />
             <Route path="/leadership" element={<Navigate to="/our-people" replace />} />
             <Route path="/contact" element={<Contact />} />

@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader';
 import Reveal from '../components/Reveal';
 import ContactBand from '../components/ContactBand';
 import { taxation, business, accounting } from '../data/images';
+import './TaxUpdate.css';
 import './Services.css';
 
 export default function Services() {
@@ -72,6 +73,13 @@ export default function Services() {
         title="Our Services"
         subtitle="Specialized accounting, taxation, and business advisory services designed to give your business clarity, total compliance, and sustainable growth."
       />
+
+      {/* Tax Update Navigation Pill */}
+      <div style={{ backgroundColor: '#f4f6fb', padding: '16px 24px', borderBottom: '1px solid rgba(20, 30, 90, 0.06)', display: 'flex', justifyContent: 'center' }}>
+        <Link to="/tax-update" className="ms-tax-pill-btn">
+          Tax Update &rarr;
+        </Link>
+      </div>
 
       {/* ====================================================================
           GROUP 1: TAXATION

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
 import AnimatedCard from '../components/AnimatedCard';
+import './TaxUpdate.css';
 
 export default function About() {
   return (
@@ -23,9 +24,15 @@ export default function About() {
               <p style={{ fontSize: '1.125rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
                 We believe that accounting is more than just compliance and year-end lodgements. Professional accounting provides business leaders with the clarity and resources needed to create sound operational plans, reduce overheads, increase profitability, and sustainably scale.
               </p>
-              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                 Led by Mandar Gokhale, a seasoned Chartered Accountant from the Institute of Chartered Accountants in Australia, our firm provides the high-level technical standards of a major practice combined with the direct accessibility and genuine care of a boutique firm.
               </p>
+
+              <div style={{ marginBottom: '2.5rem' }}>
+                <Link to="/tax-update" className="ms-tax-pill-btn">
+                  Tax Update &rarr;
+                </Link>
+              </div>
 
               <div style={{ borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Our Core Principles</h3>
