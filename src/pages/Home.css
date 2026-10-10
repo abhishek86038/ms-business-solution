@@ -239,8 +239,28 @@
 }
 
 /* ==========================================================================
-   C) PRACTICE AREAS
+   C) PRACTICE AREAS (Dark background with Chladni particle animation)
    ========================================================================== */
+.ms-home-practice-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(900px 500px at 50% 0%, #11236b 0%, #050a14 70%);
+  padding: 100px 24px;
+}
+
+.ms-home-practice-section .ms-home-eyebrow {
+  color: #9fb0ff;
+}
+
+.ms-home-practice-section .ms-home-heading {
+  color: #ffffff;
+}
+
+.ms-home-practice-section .ms-home-practice-intro {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .ms-home-practice-header {
   text-align: center;
   max-width: 760px;
@@ -519,7 +539,8 @@
 }
 
 @media (max-width: 860px) {
-  .ms-home-section {
+  .ms-home-section,
+  .ms-home-practice-section {
     padding: 80px 20px;
   }
 

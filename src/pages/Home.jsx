@@ -5,6 +5,7 @@ import Team from '../components/Team';
 import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import ContactBand from '../components/ContactBand';
+import ChladniBackground from '../components/chladni/ChladniBackground';
 import { office1, accounting, taxation, business } from '../data/images';
 import './Home.css';
 
@@ -214,10 +215,11 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          C) PRACTICE AREAS
+          C) PRACTICE AREAS (Animated Chladni particle background)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--light" data-theme="light">
-        <div className="ms-home-container">
+      <section className="ms-home-practice-section" data-theme="dark">
+        <ChladniBackground />
+        <div className="ms-home-container" style={{ position: 'relative', zIndex: 1 }}>
           <Reveal>
             <div className="ms-home-practice-header">
               <p className="ms-home-eyebrow">Core capabilities</p>
