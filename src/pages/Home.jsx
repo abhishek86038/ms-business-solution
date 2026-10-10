@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Team from '../components/Team';
@@ -10,16 +10,12 @@ import ExpandingPanels from '../components/ExpandingPanels';
 import FlipCard from '../components/FlipCard';
 import LightBeams from '../components/LightBeams';
 import PhotonGrid from '../components/PhotonGrid';
+import { ClientsSection, FaqSection } from '../components/emboss/EmbossSections';
 import { office1, office2, accounting, taxation, business } from '../data/images';
 import taxUpdates from '../data/taxUpdates';
 import './Home.css';
 
 export default function Home() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFaq = (idx) => {
-    setOpenFaqIndex((prev) => (prev === idx ? null : idx));
-  };
 
   const practiceAreas = [
     {
@@ -63,44 +59,6 @@ export default function Home() {
       ],
       linkText: 'Business services',
       linkUrl: '/services#business-services'
-    }
-  ];
-
-  const clientTypes = [
-    {
-      title: 'Small Business',
-      desc: 'Accounts, BAS and tax kept up to date.',
-      rowClass: 'ms-home-who-card--r1'
-    },
-    {
-      title: 'Companies',
-      desc: 'Company structure, financial statements and returns.',
-      rowClass: 'ms-home-who-card--r1'
-    },
-    {
-      title: 'Self Employed',
-      desc: 'Clear records and tax returns for sole traders.',
-      rowClass: 'ms-home-who-card--r1'
-    },
-    {
-      title: 'SMSF',
-      desc: 'Accounting and tax compliance for your fund.',
-      rowClass: 'ms-home-who-card--r1'
-    },
-    {
-      title: 'Partnerships',
-      desc: 'Accurate accounts for every partner.',
-      rowClass: 'ms-home-who-card--r2'
-    },
-    {
-      title: 'Trusts',
-      desc: 'Trust accounts and tax returns done properly.',
-      rowClass: 'ms-home-who-card--r2'
-    },
-    {
-      title: 'Individuals',
-      desc: 'Tax returns and advice for your personal situation.',
-      rowClass: 'ms-home-who-card--r2'
     }
   ];
 
@@ -150,30 +108,6 @@ export default function Home() {
   ];
 
   const latestTaxUpdates = taxUpdates.slice(0, 3);
-
-  const faqItems = [
-    {
-      q: 'What does an introductory consultation involve?',
-      a: 'A relaxed conversation about your business and goals so we can explain how we can help.'
-    },
-    {
-      q: 'Which areas do you serve?',
-      a: 'Bella Vista, Norwest, Baulkham Hills, Castle Hill and surrounding areas of Sydney.'
-    },
-    {
-      q: 'Do you work with individuals as well as businesses?',
-      a: 'Yes. We work with individuals, self-employed people, small businesses, companies, partnerships, trusts and SMSFs.'
-    },
-    {
-      q: 'Can you help me choose the right business structure?',
-      a: 'Yes. Choosing the right entity is part of our accounting and business services.'
-    },
-    {
-      q: 'How do I get started?',
-      a: 'Book a consultation or call 02 8814 7905 or 02 8824 3712.',
-      isContactAnswer: true
-    }
-  ];
 
   return (
     <div className="ms-home-scope">
@@ -328,30 +262,9 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          4. WHO WE WORK WITH (7 Cards, Hover turns blue)
+          4. WHO WE WORK WITH (Embossed look)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--light" data-theme="light">
-        <div className="ms-home-container">
-          <Reveal>
-            <div className="ms-home-who-header">
-              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
-                Accounting and tax for every kind of client
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="ms-home-who-grid">
-            {clientTypes.map((item, idx) => (
-              <Reveal key={idx} delay={idx * 90} className={item.rowClass}>
-                <div className="ms-home-who-card">
-                  <h3 className="ms-home-who-card-title">{item.title}</h3>
-                  <p className="ms-home-who-card-desc">{item.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ClientsSection />
 
       {/* ====================================================================
           5. WHY M&S (Horizontal Expanding Panels with LightBeams background)
@@ -510,65 +423,9 @@ export default function Home() {
       </section>
 
       {/* ====================================================================
-          9. FAQ (Accordion, Keyboard Accessible, One Open at a Time)
+          9. FAQ (Embossed look)
           ==================================================================== */}
-      <section className="ms-home-section ms-home-section--white" data-theme="light">
-        <div className="ms-home-container">
-          <Reveal>
-            <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px' }}>
-              <h2 className="ms-home-heading" style={{ marginBottom: 0 }}>
-                Frequently Asked Questions
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="ms-home-faq-wrapper">
-            {faqItems.map((item, idx) => {
-              const isOpen = openFaqIndex === idx;
-              return (
-                <Reveal key={idx} delay={idx * 90}>
-                  <div className={`ms-home-faq-item ${isOpen ? 'is-open' : ''}`}>
-                    <button
-                      type="button"
-                      className="ms-home-faq-trigger"
-                      onClick={() => toggleFaq(idx)}
-                      aria-expanded={isOpen}
-                      aria-controls={`faq-answer-${idx}`}
-                      id={`faq-question-${idx}`}
-                    >
-                      <h3 className="ms-home-faq-question">{item.q}</h3>
-                      <span className="ms-home-faq-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="12" y1="5" x2="12" y2="19" />
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                        </svg>
-                      </span>
-                    </button>
-                    <div
-                      id={`faq-answer-${idx}`}
-                      role="region"
-                      aria-labelledby={`faq-question-${idx}`}
-                      className={`ms-home-faq-collapse ${isOpen ? 'is-open' : ''}`}
-                    >
-                      <div className="ms-home-faq-collapse-inner">
-                        {item.isContactAnswer ? (
-                          <p className="ms-home-faq-answer">
-                            Book a <Link to="/contact">consultation</Link> or call{' '}
-                            <a href="tel:+61288147905">02 8814 7905</a> or{' '}
-                            <a href="tel:+61288243712">02 8824 3712</a>.
-                          </p>
-                        ) : (
-                          <p className="ms-home-faq-answer">{item.a}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <FaqSection />
 
       {/* ====================================================================
           10. CONTACT BAND
